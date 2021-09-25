@@ -1,0 +1,107 @@
+{
+    "emojis" : {
+        "red_ckeck" : "<a:redcheck:832308872232304680>",
+        "green_globe" : "<:internet:832309051908030464>",
+        "hautPaleur_A" : "<a:voix:832308997938872381>",
+        "outils" : "<a:outils:832309096362672168>",
+        "admin_emote" : "<:adm:832308908625362996>",
+        "embed_emote" : "<:emb:832308971981373451>",
+        "red_cross_A" : "<a:redcheck:832312200890417162>",
+        "green_check_A" : "<a:green_check:832308048299163769>",
+        "text" : "<:text:832309016460787733> ",
+        "red_circle" : "🔴",
+        "white_circle" : "⚪",
+        "green_circle" : "🟢",
+        "orange_circle" : "🟠",
+        "yellow_circle" : "🟡",
+        "blue_circle" : "🔵",
+        "black_circle" : "⚫",
+        "IUT" : "<:IUT:751012834590326784>",
+        "phone" : "<:phone:885788375209103420>",
+        "www" : "<:web_logo:885787974908903444>",
+        "rt" : "<:122225:887304610862231592>"
+    },
+    "extra" : {
+        "IUT" : "IUT",
+        "text" : "text",
+        "admin_emote" : "adm",
+        "phone" : "phone",
+        "www" : "web_logo",
+        "rt" : "122225"
+
+    },
+
+    "emoji_id" : {
+        "red_ckeck" : "832308872232304680",
+        "green_globe" : "832309051908030464",
+        "hautPaleur_A" : "832308997938872381",
+        "outils" : "832309096362672168",
+        "admin_emote" : "832308908625362996",
+        "embed_emote" : "832308971981373451",
+        "red_cross_A" : "832312200890417162",
+        "green_check_A" : "832308048299163769"
+    },
+    "numbers" : {
+        "id" : {
+            "zero" : "<:164zero:833306493213343774>",
+            "one" : "<:163one:833306490844217375>",
+            "two" : "<:162two:833306492882518036>",
+            "three" : "<:161three:833306492580265995>",
+            "four" : "<:160four:833306491539947540>",
+            "five" : "<:159five:833306492643180560>",
+            "six" : "<:158six:833306492538585108>",
+            "seven" : "<:157seven:833306484312899635>",
+            "eight" : "<:156eight:833306483290406943>",
+            "nine" : "<:155nine:833306481204920321>"
+        },
+        "name" : {
+            "zero" : "164zero",
+            "one" : "163one",
+            "two" : "162two",
+            "three" : "161three",
+            "four" : "160four",
+            "five" : "159five",
+            "six" : "158six",
+            "seven" : "157seven",
+            "eight" : "156eight",
+            "nine" : "155nine"
+        }
+    },
+    "game" : {
+        "name" : {
+            "valorant" : "valorant",
+            "csgo" : "CSGOLogo",
+            "minecraft" : "minecraft",
+            "overwatch" : "overwatch",
+            "rocketleague" : "rocket",
+            "lol" : "Lol",
+            "osu" : "Osu",
+            "summoner" : "summonerswar"
+        },
+        "id" : {
+            "valorant" : "<:valorant:834777364507525150>",
+            "csgo" : "<:CSGOLogo:834777521508843571>",
+            "minecraft" : "<:minecraft:834777570100379668>",
+            "overwatch" : "<:overwatch:834777348901437470>",
+            "rocketleague" : "<:rocket:834777524940177458>",
+            "lol" : "<:Lol:834777567394267210>",
+            "osu" : "<:Osu:834777474432499723>",
+            "summoner" : "<:summonerswar:834778123727798305>"
+        }
+    },
+    "ressources" : {
+        "mana" : "<:solarsystem:847963303380385812>",
+        "stone" : "<:stone:837410044714549298>",
+        "gold" : "<:gold:837409698587344917>",
+        "iron" : "<:iron:837409725649780796>",
+        "void" : "<:Void_Energy:847821184275185704>",
+        "xp" : "<:icon_double_buff_xp_token:847907582885494796>",
+        "chestD" : "<:gems:847961486897971230>",
+        "chestC" : "<:gem:847961487213592646> ",
+        "chestB" : "<:gem1:847961486844624988> ",
+        "chestA" : "<:diamond:847961487163392080> ",
+        "chestS" : "<:gem2:847961487053422622>",
+        "valkyrie" : "<:PngItem_1836805:848561702260834304>"
+    }
+
+}
