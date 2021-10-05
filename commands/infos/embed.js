@@ -20,7 +20,7 @@ module.exports = {
             .setTitle("Message automatique :")
             .addField("**Rôle de délégués**", "Bonjour à tous ! J'aimerais que vous me fassiez passer vos deux délégués (Titulaire et supplément) via message privé ici : .ZartaX0O3#8888")
 
-        message.channel.send({embeds: [embed]});
+        message.channel.send(embed);
     }
 }
 
