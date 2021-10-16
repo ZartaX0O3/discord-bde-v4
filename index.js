@@ -56,4 +56,4 @@ mongoose.connect("mongodb+srv://ZartaX0O3:Panda567&@cluster0.77kiy.mongodb.net/D
         console.log(err);
     });
 
-client.login("ODc2NDU4NzMyNjYwMzUxMDM2.YRkXzQ.OPJmkljZaJ07woQQOomttgx7Inc").then(r => console.log());
+client.login(process.env.TOKEN).then(r => console.log());
