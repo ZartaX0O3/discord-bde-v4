@@ -1,0 +1,40 @@
+{
+    "ownerIDS": ["291698040027480064"],
+    "default_cooldown_in_sec" : 3,
+    "antiCrash": true,
+    "ping_message": true,
+    "delete_commands": true,
+    "somethingwentwrong_cmd": true,
+
+    "messages": {
+    "ping_message": "Pour voir toutes les commandes tapez: `%{prefix}%help`",
+        "cooldown": "❌ Veuillez patienter %{timeleft}% secondes(s) avant de ré-effectué la commande `%{commandname}%`.",
+        "notallowed_to_exec_cmd": {
+        "title": "❌ Tu n'as pas les permissions pour utiliser cette commande!",
+            "description": {
+            "memberpermissions": "Tu as besoin de ces permissions :\n> %{commandmemberpermissions}%",
+                "requiredroles": "Tu as besoin d'un des rôles suivants :\n> %{commandrequiredroles}%",
+                "default": "Please make sure, to get the needed Permissions !"
+        }
+    },
+    "somethingwentwrong_cmd": {
+        "title": "❌ Une erreur est survenu lors du lancement de la commande: `%{commandname}%` command",
+            "description": "```%{errormessage}%```"
+    },
+    "unknown_cmd": "❌  Commande inconnu, essayez:  **`%{prefix}%help`**",
+        "error_occur": "❌ Une erreur est survenu",
+        "error_occur_desc": "````%{errorstack}%````"
+    },
+    "unknown_group": "❌ Mauvais salon, essayez dans un salon adéquat",
+    "timeout": {
+    "notallowed_to_exec_cmd": {
+        "memberpermissions": 4500,
+            "alloweduserids": 3500,
+            "requiredroles": 3500
+    },
+    "minargs": 3000,
+        "maxargs": 3000,
+        "minplusargs": 3000,
+        "maxplusargs": 3000
+}
+}

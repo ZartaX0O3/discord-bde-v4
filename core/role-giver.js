@@ -43,7 +43,7 @@ const emojiToRoleIDGame = [
 const groupeGiver = async (reaction, user) => {
 
     const {message, emoji} = reaction
-    if ( channels.chan3 != message.channel.id ) return;
+    if ( channels.chan3 !== message.channel.id ) return;
     const member = message.guild.members.cache.get(user.id)
 
     if (!member) return;
@@ -60,7 +60,7 @@ const groupeGiver = async (reaction, user) => {
             let targetRole = role;
 
             if(member.roles.cache.has(roles.extra.second_year)){
-                if(targetRole == roles.groupe.groupe_9 || targetRole == roles.groupe.groupe_10){
+                if(targetRole === roles.groupe.groupe_9 || targetRole === roles.groupe.groupe_10){
                 
                     message.channel.send("Il n'y a pas de groupe 9 et 10 pour les deuxième années :(").then(msg => {
                         setTimeout(() => {
@@ -73,7 +73,7 @@ const groupeGiver = async (reaction, user) => {
             }
 
             if(member.roles.cache.has(roles.extra.second_year) || member.roles.cache.has(roles.extra.first_year)){
-                if(targetRole == roles.licence.licencePm || targetRole == roles.licence.licenceWeb || targetRole == roles.licence.licenceRt){
+                if(targetRole === roles.licence.licencePm || targetRole === roles.licence.licenceWeb || targetRole === roles.licence.licenceRt){
 
                     message.channel.send("Impossible de récupérer ce rôle en tant que 1A ou 2A").then(msg => {
                         setTimeout(() => {
@@ -112,7 +112,7 @@ const yearGiver = async (reaction, user) => {
 
     const {message, emoji} = reaction
 
-    if ( channels.chan4 != message.channel.id ) return;
+    if ( channels.chan4 !== message.channel.id ) return;
 
     const member = message.guild.members.cache.get(user.id)
 
@@ -132,7 +132,7 @@ const yearGiver = async (reaction, user) => {
             
             let targetRole = role;
 
-            if(targetRole == roles.extra.professor){
+            if(targetRole === roles.extra.professor){
 
                 message.channel.send("Veuillez contacter un Administrateur pour récupérer ce rôle ! (Via un channel d'aide ou en message privé)").then(msg => {
                     setTimeout(() => {

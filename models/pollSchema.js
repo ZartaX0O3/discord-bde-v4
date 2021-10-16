@@ -1,4 +1,5 @@
-const mongoose = require("mongoose");
+const mongoose = require("mongoose")
+
 
 const pollSchema = new mongoose.Schema({
     id: { type: String, require: true, unique: true},

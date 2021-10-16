@@ -1,6 +1,5 @@
 {
   "name": "discord-bde-v2",
-  "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -20,13 +19,20 @@
   "homepage": "https://github.com/ZartaX0O3/discord-bde-v2#readme",
   "dependencies": {
     "12": "^1.0.2",
+    "@discordjs/builders": "^0.6.0",
+    "@discordjs/rest": "^0.1.0-canary.0",
     "canvas": "^2.8.0",
-    "discord-buttons": "^2.4.1",
-    "discord.js": "^12.5.3",
-    "dotenv": "^8.2.0",
+    "colors": "^1.4.0",
+    "discord-api-types": "^0.23.1",
+    "discord.js": "13.1",
+    "dotenv": "^8.6.0",
+    "glob": "^7.2.0",
     "moment": "^2.29.1",
-    "mongoose": "^5.12.6",
-    "random-words": "^1.1.1",
-    "version": "^0.1.2"
+    "mongoose": "^5.13.11",
+    "random-words": "^1.1.1"
+  },
+  "devDependencies": {
+    "ascii-table": "^0.0.9",
+    "discord-slash-commands-client": "^1.2.2"
   }
 }
