@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ZartaX0O3/discord-bde-v2.git"
+    "url": "git+https://github.com/ZartaX0O3/discord-bde-v4.git"
   },
   "keywords": [],
   "author": "",
@@ -35,5 +35,8 @@
   "devDependencies": {
     "ascii-table": "^0.0.9",
     "discord-slash-commands-client": "^1.2.2"
+  },
+  "engines": {
+    "node": "16.7.0"
   }
 }
