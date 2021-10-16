@@ -1,7 +1,4 @@
 const { readdirSync } = require("fs");
-const ascii = require("ascii-table");
-let table = new ascii("Commands");
-table.setHeading("Command", "Load status");
 
 console.log("Welcome to SERVICE HANDLER /--/ Discord: ZartaX0O3#8888");
 module.exports = (client) => {
@@ -12,15 +9,12 @@ module.exports = (client) => {
                 let pull = require(`../commands/${dir}/${file}`);
                 if (pull.name) {
                     let promise = client.commands.set(pull.name, pull);
-                    table.addRow(file, "Ready");
                 } else {
-                    table.addRow(file, `error -> missing a help.name, or help.name is not a string.`);
                     continue;
                 }
                 if (pull.aliases && Array.isArray(pull.aliases)) pull.aliases.forEach((alias) => client.aliases.set(alias, pull.name));
             }
         });
-        console.log(table.toString());
     }catch (e){
         console.log(String(e.stack))
     }

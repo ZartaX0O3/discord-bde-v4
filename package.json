@@ -32,7 +32,6 @@
     "random-words": "^1.1.0"
   },
   "devDependencies": {
-    "ascii-table": "^0.0.9",
     "discord-slash-commands-client": "^1.2.2"
   },
   "engines": {
