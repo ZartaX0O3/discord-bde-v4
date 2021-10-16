@@ -9,8 +9,8 @@
       "CmdDescription": "Grant specific Information about something!"
     },
     {
-      "Folder": "Admin",
-      "CmdName": "admin",
+      "Folder": "moderation",
+      "CmdName": "moderation",
       "CmdDescription": "Administrate the Server!"
     }
   ]
