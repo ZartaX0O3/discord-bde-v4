@@ -49,6 +49,7 @@ client.categories = require("fs").readdirSync(`./commands`);
 mongoose.connect("mongodb+srv://ZartaX0O3:Panda567&@cluster0.77kiy.mongodb.net/DiscordBot?retryWrites=true&w=majority", {
     useNewUrlParser: true,
     useFindAndModify: false,
+    useUnifiedTopology: true,
 })
     .then(() => {
         console.log(`Connected to the DB`);
