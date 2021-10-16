@@ -3,7 +3,7 @@ const ascii = require("ascii-table");
 let table = new ascii("Commands");
 table.setHeading("Command", "Load status");
 
-console.log("Welcome to SERVICE HANDLER /--/ By https://milrato.eu /--/ Discord: ZartaX0O3#8888");
+console.log("Welcome to SERVICE HANDLER /--/ Discord: ZartaX0O3#8888");
 module.exports = (client) => {
     try{
         readdirSync("./commands/").forEach((dir) => {

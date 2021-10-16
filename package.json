@@ -29,7 +29,8 @@
     "glob": "^7.2.0",
     "moment": "^2.29.1",
     "mongoose": "^5.13.11",
-    "random-words": "^1.1.1"
+    "random-words": "^1.1.1",
+    "ascii-table": "^0.0.9"
   },
   "devDependencies": {
     "ascii-table": "^0.0.9",
