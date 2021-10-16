@@ -44,9 +44,10 @@ client.categories = require("fs").readdirSync(`./commands`);
         require(`./handler/${h}`)(client);
     })
 
+
+
 mongoose.connect("mongodb+srv://ZartaX0O3:Panda567&@cluster0.77kiy.mongodb.net/DiscordBot?retryWrites=true&w=majority", {
     useNewUrlParser: true,
-    useCreateIndex: true,
     useFindAndModify: false,
 })
     .then(() => {
@@ -56,4 +57,5 @@ mongoose.connect("mongodb+srv://ZartaX0O3:Panda567&@cluster0.77kiy.mongodb.net/D
         console.log(err);
     });
 
+console.log(process.version);
 client.login(process.env.TOKEN).then(r => console.log());
