@@ -36,6 +36,6 @@
     "discord-slash-commands-client": "^1.2.2"
   },
   "engines": {
-    "node": "16.7.0"
+    "node": "16.10.0"
   }
 }
