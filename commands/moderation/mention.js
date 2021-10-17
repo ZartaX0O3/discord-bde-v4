@@ -51,7 +51,7 @@ module.exports = {
             }
         }
 
-        message.channel.send("<@&" + groupe + ">");
+        message.channel.send({content : `<@&${groupe}>`, allowedMentions : {"roles": [roles.groupe.groupe_1,roles.groupe.groupe_2,roles.groupe.groupe_3,roles.groupe.groupe_4,roles.groupe.groupe_5,roles.groupe.groupe_6,roles.groupe.groupe_7,roles.groupe.groupe_8,roles.groupe.groupe_9,roles.groupe.groupe_10,]} });
         message.delete();
 
     }
