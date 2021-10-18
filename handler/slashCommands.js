@@ -140,7 +140,8 @@ module.exports = (client) => {
                                 console.log(`${slashCommandsData.size} slashCommands ${`(With ${slashCommandsData.map(d => d.options).flat().length} Subcommands)`.green} Loaded for: ${`${guild.name}`.underline}`.brightGreen);
                             }).catch((e)=>console.log(e));
                     }catch (e){
-                        console.log(String(e).grey)
+                        console.log(
+                        )
                     }
                 });
             }
@@ -155,12 +156,12 @@ module.exports = (client) => {
                         }).catch((e)=>console.log(e));
                 }
             }catch (e){
-                console.log(String(e).grey)
+                console.log()
             }
         })
 
     } catch (e) {
-        console.log(String(e.stack).bgRed)
+        console.log()
     }
 };
 

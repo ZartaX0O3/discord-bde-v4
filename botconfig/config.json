@@ -5,7 +5,7 @@
   "slashCommandsDirs": [
     {
       "Folder": "infos",
-      "CmdName": "userinfo",
+      "CmdName": "commande",
       "CmdDescription": "Grant specific Information about something!"
     },
     {
