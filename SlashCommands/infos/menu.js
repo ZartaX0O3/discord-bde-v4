@@ -6,7 +6,7 @@ module.exports = {
     description: "Select game menu",
     type: 'CHAT_INPUT',
     run: async (client, interaction) => {
-
+        consooe.log("test");
         const select_menu = new MessageActionRow()
             .addComponents(new MessageSelectMenu()
                 .setCustomId("assignableRoles")
