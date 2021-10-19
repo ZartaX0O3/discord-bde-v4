@@ -143,19 +143,6 @@ module.exports = (client) => {
                 });
             }
         })
-        //DISABLE WHEN USING GLOBAL!
-        client.on("guildCreate", (guild) => {
-            try{
-                if(!config.loadSlashsGlobal){
-                    guild.commands.set(allCommands)
-                        .then(slashCommandsData => {
-                            console.log(`${slashCommandsData.size} slashCommands ${`(With ${slashCommandsData.map(d => d.options).flat().length} Subcommands)`} Loaded for: ${`${guild.name}`}`);
-                        }).catch((e)=>console.log(e));
-                }
-            }catch (e){
-                console.log(e)
-            }
-        })
 
     } catch (e) {
         console.log(e)
