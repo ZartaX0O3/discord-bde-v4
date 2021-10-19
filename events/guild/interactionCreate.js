@@ -12,6 +12,8 @@ module.exports = (client, interaction, message) => {
         console.log("test");
         if (client.slashCommands.has(CategoryName + interaction.options.getSubcommand())) {
             command = client.slashCommands.get(CategoryName + interaction.options.getSubcommand());
+        }
+        else{
             console.log(command);
         }
     }catch{
