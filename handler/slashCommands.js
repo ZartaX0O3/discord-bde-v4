@@ -3,7 +3,7 @@ const { SlashCommandBuilder } = require('@discordjs/builders');
 const config = require("../botconfig/config.json");
 const dirSetup = config.slashCommandsDirs;
 module.exports = (client) => {
-    /*
+
     try {
         let allCommands = [];
         readdirSync("./slashCommands/").forEach((dir) => {
@@ -149,6 +149,3 @@ module.exports = (client) => {
         console.log(e)
     }
 };
-
-*/
-}
