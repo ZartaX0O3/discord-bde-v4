@@ -42,7 +42,6 @@ client.categories = require("fs").readdirSync(`./commands`);
     .filter(Boolean)
     .forEach(h => {
         require(`./handler/${h}`)(client);
-        console.log(h);
     })
 
 

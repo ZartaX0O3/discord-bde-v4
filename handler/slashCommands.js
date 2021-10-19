@@ -1,26 +1,22 @@
-
 const { readdirSync, lstatSync } = require("fs");
 const { SlashCommandBuilder } = require('@discordjs/builders');
 const config = require("../botconfig/config.json");
 const dirSetup = config.slashCommandsDirs;
-
 module.exports = (client) => {
-
     try {
         let allCommands = [];
         readdirSync("./slashCommands/").forEach((dir) => {
             if(lstatSync(`./slashCommands/${dir}`).isDirectory()) {
-                const cmdSetup = dirSetup.find(d=> d.Folder === dir);
+                const groupName = dir;
+                const cmdSetup = dirSetup.find(d=>d.Folder === dir);
                 //If its a valid cmdsetup
                 if(cmdSetup && cmdSetup.Folder) {
                     //Set the SubCommand as a Slash Builder
                     const subCommand = new SlashCommandBuilder().setName(String(cmdSetup.CmdName).replace(/\s+/g, '_').toLowerCase()).setDescription(String(cmdSetup.CmdDescription));
                     //Now for each file in that subcommand, add a command!
                     const slashCommands = readdirSync(`./slashCommands/${dir}/`).filter((file) => file.endsWith(".js"));
-                    console.log(cmdSetup);
-                    console.log(subCommand);
                     for (let file of slashCommands) {
-                        let pull = require(`./slashCommands/${dir}/${file}`);
+                        let pull = require(`../slashCommands/${dir}/${file}`);
                         if (pull.name && pull.description) {
                             subCommand
                                 .addSubcommand((subcommand) => {
@@ -72,7 +68,7 @@ module.exports = (client) => {
                     }
                     //add the subcommand to the array
                     allCommands.push(subCommand.toJSON());
-                    console.log(allCommands);
+                    console.log(allCommands)
                 }
                 else {
                     return console.log(`The Subcommand-Folder ${dir} is not in the dirSetup Configuration!`);
@@ -105,7 +101,6 @@ module.exports = (client) => {
                                 )
                             } else if(option.StringChoices && option.StringChoices.name && option.StringChoices.description && option.StringChoices.choices && option.StringChoices.choices.length > 0){
                                 Command.addStringOption((op) =>
-
                                     op.setName(String(option.StringChoices.name).replace(/\s+/g, '_').toLowerCase()).setDescription(option.StringChoices.description).setRequired(option.StringChoices.required)
                                         .addChoices(option.StringChoices.choices.map(c=> [String(c[0]).replace(/\s+/g, '_').toLowerCase(),String(c[1])] )),
                                 )
@@ -121,7 +116,6 @@ module.exports = (client) => {
                     }
                     allCommands.push(Command.toJSON());
                     client.slashCommands.set("normal" + pull.name, pull)
-
                 }
                 else {
                     console.log(file, `error -> missing a help.name, or help.name is not a string.`.brightRed);
@@ -145,8 +139,7 @@ module.exports = (client) => {
                                 console.log(`${slashCommandsData.size} slashCommands ${`(With ${slashCommandsData.map(d => d.options).flat().length} Subcommands)`.green} Loaded for: ${`${guild.name}`.underline}`.brightGreen);
                             }).catch((e)=>console.log(e));
                     }catch (e){
-                        console.log(
-                        )
+                        console.log(String(e).grey)
                     }
                 });
             }
@@ -161,12 +154,12 @@ module.exports = (client) => {
                         }).catch((e)=>console.log(e));
                 }
             }catch (e){
-                console.log()
+                console.log(String(e).grey)
             }
         })
 
     } catch (e) {
-        console.log()
+        console.log(String(e.stack).bgRed)
     }
 };
 
