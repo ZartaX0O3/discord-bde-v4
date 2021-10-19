@@ -6,10 +6,10 @@ const Discord = require("discord.js");
 module.exports = (client, interaction, message) => {
 
     const CategoryName = interaction.commandName;
-
+    console.log(CategoryName);
+    
     let command = false;
     try{
-        console.log("test");
         if (client.slashCommands.has(CategoryName + interaction.options.getSubcommand())) {
             command = client.slashCommands.get(CategoryName + interaction.options.getSubcommand());
         }
