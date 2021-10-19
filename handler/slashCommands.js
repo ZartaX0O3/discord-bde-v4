@@ -62,13 +62,12 @@ module.exports = (client) => {
                                 })
                             client.slashCommands.set(String(cmdSetup.CmdName).replace(/\s+/g, '_').toLowerCase() + pull.name, pull)
                         } else {
-                            console.log(file, `error -> missing a help.name, or help.name is not a string.`.brightRed);
+                            console.log(file, `error -> missing a help.name, or help.name is not a string.`);
 
                         }
                     }
                     //add the subcommand to the array
                     allCommands.push(subCommand.toJSON());
-                    console.log(allCommands)
                 }
                 else {
                     return console.log(`The Subcommand-Folder ${dir} is not in the dirSetup Configuration!`);
@@ -118,7 +117,7 @@ module.exports = (client) => {
                     client.slashCommands.set("normal" + pull.name, pull)
                 }
                 else {
-                    console.log(file, `error -> missing a help.name, or help.name is not a string.`.brightRed);
+                    console.log(file, `error -> missing a help.name, or help.name is not a string.`);
                 }
             }
         });
@@ -128,18 +127,18 @@ module.exports = (client) => {
             if(config.loadSlashsGlobal){
                 client.application.commands.set(allCommands)
                     .then(slashCommandsData => {
-                        console.log(`${slashCommandsData.size} slashCommands ${`(With ${slashCommandsData.map(d => d.options).flat().length} Subcommands)`.green} Loaded for all: ${`All possible Guilds`.underline}`.brightGreen);
-                        console.log(`Because u are Using Global Settings, it can take up to 1 hour until the Commands are changed!`.bold.yellow)
+                        console.log(`${slashCommandsData.size} slashCommands ${`(With ${slashCommandsData.map(d => d.options).flat().length} Subcommands)`} Loaded for all: ${`All possible Guilds`.underline}`);
+                        console.log(`Because u are Using Global Settings, it can take up to 1 hour until the Commands are changed!`)
                     }).catch((e)=>console.log(e));
             } else {
                 client.guilds.cache.map(g => g).forEach((guild) => {
                     try{
                         guild.commands.set(allCommands)
                             .then(slashCommandsData => {
-                                console.log(`${slashCommandsData.size} slashCommands ${`(With ${slashCommandsData.map(d => d.options).flat().length} Subcommands)`.green} Loaded for: ${`${guild.name}`.underline}`.brightGreen);
+                                console.log(`${slashCommandsData.size} slashCommands ${`(With ${slashCommandsData.map(d => d.options).flat().length} Subcommands)`.green} Loaded for: ${`${guild.name}`.underline}`);
                             }).catch((e)=>console.log(e));
                     }catch (e){
-                        console.log(String(e).grey)
+                        console.log(e)
                     }
                 });
             }
@@ -150,16 +149,16 @@ module.exports = (client) => {
                 if(!config.loadSlashsGlobal){
                     guild.commands.set(allCommands)
                         .then(slashCommandsData => {
-                            console.log(`${slashCommandsData.size} slashCommands ${`(With ${slashCommandsData.map(d => d.options).flat().length} Subcommands)`.green} Loaded for: ${`${guild.name}`.underline}`.brightGreen);
+                            console.log(`${slashCommandsData.size} slashCommands ${`(With ${slashCommandsData.map(d => d.options).flat().length} Subcommands)`.green} Loaded for: ${`${guild.name}`.underline}`);
                         }).catch((e)=>console.log(e));
                 }
             }catch (e){
-                console.log(String(e).grey)
+                console.log(e)
             }
         })
 
     } catch (e) {
-        console.log(String(e.stack).bgRed)
+        console.log(e)
     }
 };
 
