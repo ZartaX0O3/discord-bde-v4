@@ -127,7 +127,7 @@ module.exports = (client) => {
             if(config.loadSlashsGlobal){
                 client.application.commands.set(allCommands)
                     .then(slashCommandsData => {
-                        console.log(`${slashCommandsData.size} slashCommands ${`(With ${slashCommandsData.map(d => d.options).flat().length} Subcommands)`} Loaded for all: ${`All possible Guilds`.underline}`);
+                        console.log(`${slashCommandsData.size} slashCommands ${`(With ${slashCommandsData.map(d => d.options).flat().length} Subcommands)`} Loaded for all: ${`All possible Guilds`}`);
                         console.log(`Because u are Using Global Settings, it can take up to 1 hour until the Commands are changed!`)
                     }).catch((e)=>console.log(e));
             } else {
@@ -135,7 +135,7 @@ module.exports = (client) => {
                     try{
                         guild.commands.set(allCommands)
                             .then(slashCommandsData => {
-                                console.log(`${slashCommandsData.size} slashCommands ${`(With ${slashCommandsData.map(d => d.options).flat().length} Subcommands)`.green} Loaded for: ${`${guild.name}`.underline}`);
+                                console.log(`${slashCommandsData.size} slashCommands ${`(With ${slashCommandsData.map(d => d.options).flat().length} Subcommands)`} Loaded for: ${`${guild.name}`}`);
                             }).catch((e)=>console.log(e));
                     }catch (e){
                         console.log(e)
@@ -149,7 +149,7 @@ module.exports = (client) => {
                 if(!config.loadSlashsGlobal){
                     guild.commands.set(allCommands)
                         .then(slashCommandsData => {
-                            console.log(`${slashCommandsData.size} slashCommands ${`(With ${slashCommandsData.map(d => d.options).flat().length} Subcommands)`.green} Loaded for: ${`${guild.name}`.underline}`);
+                            console.log(`${slashCommandsData.size} slashCommands ${`(With ${slashCommandsData.map(d => d.options).flat().length} Subcommands)`} Loaded for: ${`${guild.name}`}`);
                         }).catch((e)=>console.log(e));
                 }
             }catch (e){
