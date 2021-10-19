@@ -9,6 +9,7 @@ module.exports = (client) => {
     try {
         let allCommands = [];
         readdirSync("./slashCommands/").forEach((dir) => {
+            console.log("test 1");
             if(lstatSync(`./slashCommands/${dir}`).isDirectory()) {
                 const cmdSetup = dirSetup.find(d=> d.Folder === dir);
                 //If its a valid cmdsetup
@@ -21,6 +22,7 @@ module.exports = (client) => {
                     console.log(subCommand);
                     for (let file of slashCommands) {
                         let pull = require(`../slashCommands/${dir}/${file}`);
+                        console.log("test 1");
                         if (pull.name && pull.description) {
                             subCommand
                                 .addSubcommand((subcommand) => {
@@ -78,6 +80,7 @@ module.exports = (client) => {
                     return console.log(`The Subcommand-Folder ${dir} is not in the dirSetup Configuration!`);
                 }
             } else {
+                console.log("test 1");
                 let pull = require(`../slashCommands/${dir}`);
                 if (pull.name && pull.description) {
                     let Command = new SlashCommandBuilder().setName(String(pull.name).toLowerCase()).setDescription(pull.description);
@@ -124,6 +127,7 @@ module.exports = (client) => {
 
                 }
                 else {
+                    console.log("test 1");
                     console.log(file, `error -> missing a help.name, or help.name is not a string.`.brightRed);
                 }
             }
