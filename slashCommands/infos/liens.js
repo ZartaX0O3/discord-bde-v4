@@ -24,6 +24,6 @@ module.exports = {
             .setAuthor(interaction.member.user.username, interaction.member.user.displayAvatarURL())
             .setFooter("© BDE ASCII", 'https://cdn.discordapp.com/attachments/712780211674152962/826756427837997086/setupGris.png')
 
-        await interaction.editReply({embeds: [embedLink], ephemeral: true});
+        await interaction.reply({embeds: [embedLink], ephemeral: true});
     },
 };
