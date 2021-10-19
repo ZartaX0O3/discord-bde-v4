@@ -5,11 +5,11 @@ const config = require("../botconfig/config.json");
 const dirSetup = config.slashCommandsDirs;
 
 module.exports = (client) => {
-    console.log("test 1");
+
     try {
         let allCommands = [];
         readdirSync("./slashCommands/").forEach((dir) => {
-            console.log("test 1");
+
             if(lstatSync(`./slashCommands/${dir}`).isDirectory()) {
                 const cmdSetup = dirSetup.find(d=> d.Folder === dir);
                 //If its a valid cmdsetup
@@ -18,11 +18,10 @@ module.exports = (client) => {
                     const subCommand = new SlashCommandBuilder().setName(String(cmdSetup.CmdName).replace(/\s+/g, '_').toLowerCase()).setDescription(String(cmdSetup.CmdDescription));
                     //Now for each file in that subcommand, add a command!
                     const slashCommands = readdirSync(`./slashCommands/${dir}/`).filter((file) => file.endsWith(".js"));
-                    console.log(cmdSetup);
-                    console.log(subCommand);
+    
                     for (let file of slashCommands) {
                         let pull = require(`../slashCommands/${dir}/${file}`);
-                        console.log("test 1");
+
                         if (pull.name && pull.description) {
                             subCommand
                                 .addSubcommand((subcommand) => {
@@ -74,13 +73,11 @@ module.exports = (client) => {
                     }
                     //add the subcommand to the array
                     allCommands.push(subCommand.toJSON());
-                    console.log(allCommands);
                 }
                 else {
                     return console.log(`The Subcommand-Folder ${dir} is not in the dirSetup Configuration!`);
                 }
             } else {
-                console.log("test 1");
                 let pull = require(`../slashCommands/${dir}`);
                 if (pull.name && pull.description) {
                     let Command = new SlashCommandBuilder().setName(String(pull.name).toLowerCase()).setDescription(pull.description);
@@ -127,7 +124,6 @@ module.exports = (client) => {
 
                 }
                 else {
-                    console.log("test 1");
                     console.log(file, `error -> missing a help.name, or help.name is not a string.`.brightRed);
                 }
             }
@@ -149,7 +145,7 @@ module.exports = (client) => {
                                 console.log(`${slashCommandsData.size} slashCommands ${`(With ${slashCommandsData.map(d => d.options).flat().length} Subcommands)`.green} Loaded for: ${`${guild.name}`.underline}`.brightGreen);
                             }).catch((e)=>console.log(e));
                     }catch (e){
-                        console.log(
+                        console.log(e);
                         )
                     }
                 });
@@ -165,12 +161,12 @@ module.exports = (client) => {
                         }).catch((e)=>console.log(e));
                 }
             }catch (e){
-                console.log()
+                console.log(e)
             }
         })
 
     } catch (e) {
-        console.log()
+        console.log(e)
     }
 };
 
