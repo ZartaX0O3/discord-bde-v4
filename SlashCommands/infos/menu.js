@@ -1,12 +1,11 @@
-const {MessageEmbed, MessageActionRow, MessageSelectMenu} = require("discord.js");
-const emote = require("../../emojis.json");
+const {MessageActionRow, MessageSelectMenu} = require("discord.js");
 
 module.exports = {
     name: "game",
     description: "Select game menu",
     type: 'CHAT_INPUT',
     run: async (client, interaction) => {
-        consooe.log("test");
+
         const select_menu = new MessageActionRow()
             .addComponents(new MessageSelectMenu()
                 .setCustomId("assignableRoles")
