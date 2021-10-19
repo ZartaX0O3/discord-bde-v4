@@ -8,7 +8,7 @@ module.exports = (client) => {
 
     try {
         let allCommands = [];
-        readdirSync("./slashCommands/").forEach((dir) => {
+        readdirSync("./SlashCommands/").forEach((dir) => {
 
             if(lstatSync(`./slashCommands/${dir}`).isDirectory()) {
                 const cmdSetup = dirSetup.find(d=> d.Folder === dir);
