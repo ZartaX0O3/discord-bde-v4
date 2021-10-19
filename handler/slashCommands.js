@@ -3,19 +3,22 @@ const { readdirSync, lstatSync } = require("fs");
 const { SlashCommandBuilder } = require('@discordjs/builders');
 const config = require("../botconfig/config.json");
 const dirSetup = config.slashCommandsDirs;
+
 module.exports = (client) => {
 
     try {
         let allCommands = [];
         readdirSync("./slashCommands/").forEach((dir) => {
             if(lstatSync(`./slashCommands/${dir}`).isDirectory()) {
-                const cmdSetup = dirSetup.find( d=>d.Folder === dir);
+                const cmdSetup = dirSetup.find(d=> d.Folder === dir);
                 //If its a valid cmdsetup
                 if(cmdSetup && cmdSetup.Folder) {
                     //Set the SubCommand as a Slash Builder
                     const subCommand = new SlashCommandBuilder().setName(String(cmdSetup.CmdName).replace(/\s+/g, '_').toLowerCase()).setDescription(String(cmdSetup.CmdDescription));
                     //Now for each file in that subcommand, add a command!
                     const slashCommands = readdirSync(`./slashCommands/${dir}/`).filter((file) => file.endsWith(".js"));
+                    console.log(cmdSetup);
+                    console.log(subCommand);
                     for (let file of slashCommands) {
                         let pull = require(`../slashCommands/${dir}/${file}`);
                         if (pull.name && pull.description) {
@@ -69,6 +72,7 @@ module.exports = (client) => {
                     }
                     //add the subcommand to the array
                     allCommands.push(subCommand.toJSON());
+                    console.log(allCommands);
                 }
                 else {
                     return console.log(`The Subcommand-Folder ${dir} is not in the dirSetup Configuration!`);
@@ -117,6 +121,7 @@ module.exports = (client) => {
                     }
                     allCommands.push(Command.toJSON());
                     client.slashCommands.set("normal" + pull.name, pull)
+
                 }
                 else {
                     console.log(file, `error -> missing a help.name, or help.name is not a string.`.brightRed);
