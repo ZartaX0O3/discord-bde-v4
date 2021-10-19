@@ -5,7 +5,7 @@ const config = require("../botconfig/config.json");
 const dirSetup = config.slashCommandsDirs;
 
 module.exports = (client) => {
-
+    console.log("test 1");
     try {
         let allCommands = [];
         readdirSync("./slashCommands/").forEach((dir) => {
