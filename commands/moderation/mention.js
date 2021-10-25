@@ -25,7 +25,7 @@ module.exports = {
 
 
         let groupe;
-        const channels = [channel.groupe.premier["1AG1"], channel.groupe.premier["1AG2"], channel.groupe.premier["1AG3"], channel.groupe.premier["1AG4"], channel.groupe.premier["1AG5"], channel.groupe.premier["1AG6"], channel.groupe.premier["1AG7"], channel.groupe.premier["1AG8"], channel.groupe.premier["1AG9"], channel.groupe.premier["1AG10"], channel.groupe.deuxieme["1AG1"], channel.groupe.deuxieme["1AG2"], channel.groupe.deuxieme["1AG3"], channel.groupe.deuxieme["1AG4"], channel.groupe.deuxieme["1AG5"], channel.groupe.deuxieme["1AG6"], channel.groupe.deuxieme["1AG7"], channel.groupe.deuxieme["1AG8"], channel.chan2]
+        const channels = [channel.groupe.premier["1AG1"], channel.groupe.premier["1AG2"], channel.groupe.premier["1AG3"], channel.groupe.premier["1AG4"], channel.groupe.premier["1AG5"], channel.groupe.premier["1AG6"], channel.groupe.premier["1AG7"], channel.groupe.premier["1AG8"], channel.groupe.premier["1AG9"], channel.groupe.premier["1AG10"], channel.groupe.deuxieme["2AG1"], channel.groupe.deuxieme["2AG2"], channel.groupe.deuxieme["2AG3"], channel.groupe.deuxieme["2AG4"], channel.groupe.deuxieme["2AG5"], channel.groupe.deuxieme["2AG6"], channel.groupe.deuxieme["2AG7"], channel.groupe.deuxieme["2AG8"], channel.chan2]
         const group = [[1, roles.groupe.groupe_1], [2, roles.groupe.groupe_2], [3, roles.groupe.groupe_3], [4, roles.groupe.groupe_4], [5, roles.groupe.groupe_5], [6, roles.groupe.groupe_6], [7, roles.groupe.groupe_7], [8, roles.groupe.groupe_8], [9, roles.groupe.groupe_9], [10, roles.groupe.groupe_10]]
 
         if (!channels.find(element => element === message.channel.id)) return message.reply({
@@ -46,7 +46,7 @@ module.exports = {
 
         for (const [number, roles] of group) {
 
-            if (args[0] == number) {
+            if (args[0] == number) { // Ne pas mettre de  === ici !!!
                 groupe = roles;
             }
         }

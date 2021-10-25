@@ -29,14 +29,12 @@ module.exports = {
         let messageRes = "";
 
         liste.forEach((element, index) => {
-
             if(choix[index] === pollProfile.response_1){
 
                 const User = client.users.cache.get(element);
                 messageRes+= User.username+ `\n`
 
             }
-            
         });
 
         fs.writeFile('votes.txt', messageRes, function (err) {
