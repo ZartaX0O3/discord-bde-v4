@@ -25,11 +25,11 @@ module.exports = {
             .setTitle(` 🔶 Bonjour à tous 🔶`)
             .setDescription("\nPour rappel :")
             .addFields(
-                {name: `${emote.emojis.arrow_right} Jeudi 16 Décembre`, value:``},
-                {name:`${emote.emojis.arrow_right} 600 personnes (Inter IUT)`,value:``},
-                {name:`${emote.emojis.arrow_right} Prix 27€ pour adhérent, 30€ sinon`,value:``},
-                {name:`${emote.emojis.arrow_right} Alcool compris ainsi que le service (8 serveurs), un DJ et la salle`,value:``},
-                {name:`${emote.emojis.arrow_right} Ouvert aux externes`,value:``}
+                {name: `${emote.emojis.arrow_right} Jeudi 16 Décembre`, value:`---`},
+                {name:`${emote.emojis.arrow_right} 600 personnes (Inter IUT)`,value:`---`},
+                {name:`${emote.emojis.arrow_right} Prix 27€ pour adhérent, 30€ sinon`,value:`---`},
+                {name:`${emote.emojis.arrow_right} Alcool compris ainsi que le service (8 serveurs), un DJ et la salle`,value:`---`},
+                {name:`${emote.emojis.arrow_right} Ouvert aux externes`,value:`---`}
             )
             .addField('**Infos**','La soirée se déroulera à l\'Usine (NightClub), les inscriptions sont désormais ouvertes jusqu\'au 20 Novembre (après cela impossible de s\'inscrire donc dépêchez vous ! ).\n**Voici la décharge de responsabilité obligatoire pour tous le monde, nous la donnons en avance pour que tous le monde puisse déjà la faire signer (Signature électronique valide), début des réservations lundi de la rentrée**')
             .setImage('https://cdn.discordapp.com/attachments/832304727206789170/906140700259794974/IMG_4900.jpg')
