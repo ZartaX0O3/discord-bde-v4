@@ -26,8 +26,8 @@ module.exports = {
             .addFields(
                 { name: '\u200B', value: '\u200B' },
                 {name: `${emote.emojis.arrow_right} Deux logos demandés`, value:`Un petit pour l'avant et un plus grand pour l'arrière (*dans le même thème mais différent l'un de l'autre*)`},
-                {name:`${emote.emojis.arrow_right} Doit contenir les mots suivant`,value:`" *ASCII* ", " *Clermont* ", " *2021-2022* "`},
-                {name:`${emote.emojis.arrow_right} Date fin`,value:`Doit être fini AVANT le  **01/12/2021**`},
+                {name:`${emote.emojis.arrow_right} Doit contenir les mots suivant`,value:`"ASCII", "Clermont", "2021-2022"`},
+                {name:`${emote.emojis.arrow_right} Date fin`,value:`Doit être fini **AVANT** le  **01/12/2021**`},
                 {name:`${emote.emojis.arrow_right} Unicolore`,value:`Les logos doivent être en blanc uniquement`},
                 { name: '\u200B', value: '\u200B' }
             )
