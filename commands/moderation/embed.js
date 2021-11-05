@@ -22,13 +22,14 @@ module.exports = {
         const noelEmbed = new MessageEmbed()
             .setColor("#070707")
             .setAuthor(message.member.user.username, message.member.user.displayAvatarURL())
-            .setTitle(` 🔶 Bonjour à tous !! 🔶`)
-            .setDescription("\nJ'espère que vous allez bien, aujourd'hui j'annonce le départ du Concours de Logo pour les pulls de l'année 2021-2022\n **Pour rappel, pour que votre logo puisse paraître dans le concours il doit obligatoirement répondre aux critères suivant :**")
+            .setTitle(` 🔶 Bonjour à tous 🔶`)
+            .setDescription("\nPour rappel :")
             .addFields(
-                {name: `${emote.emojis.arrow_right} Deux logos demandés`, value:`Un petit pour l'avant et un plus grand pour l'arrière (*dans le même thème mais différent l'un de l'autre*)`},
-                {name:`${emote.emojis.arrow_right} Doit contenir les mots suivant`,value:`"ASCII", "Clermont", "2021-2022"`},
-                {name:`${emote.emojis.arrow_right} Date fin`,value:`Doit être fini **AVANT** le  **01/12/2021**`},
-                {name:`${emote.emojis.arrow_right} Unicolore`,value:`Les logos doivent être en blanc uniquement`}
+                {name: `${emote.emojis.arrow_right} Jeudi 16 Décembre`, value:``},
+                {name:`${emote.emojis.arrow_right} 600 personnes (Inter IUT)`,value:``},
+                {name:`${emote.emojis.arrow_right} Prix 27€ pour adhérent, 30€ sinon`,value:``},
+                {name:`${emote.emojis.arrow_right} Alcool compris ainsi que le service (8 serveurs), un DJ et la salle`,value:``},
+                {name:`${emote.emojis.arrow_right} Ouvert aux externes`,value:``}
             )
             .addField('**Infos**','La soirée se déroulera à l\'Usine (NightClub), les inscriptions sont désormais ouvertes jusqu\'au 20 Novembre (après cela impossible de s\'inscrire donc dépêchez vous ! ).\n**Voici la décharge de responsabilité obligatoire pour tous le monde, nous la donnons en avance pour que tous le monde puisse déjà la faire signer (Signature électronique valide), début des réservations lundi de la rentrée**')
             .setImage('https://cdn.discordapp.com/attachments/832304727206789170/906140700259794974/IMG_4900.jpg')
