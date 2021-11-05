@@ -22,7 +22,7 @@ module.exports = {
         const noelEmbed = new MessageEmbed()
             .setColor("#070707")
             .setAuthor(message.member.user.username, message.member.user.displayAvatarURL())
-            .setTitle(` 🔶 Bonjour à tous !! 🔶`)
+            .setTitle(` 🔶 Bonjour à tous 🔶`)
             .setDescription("\nJ'espère que vous allez bien, aujourd'hui j'annonce le départ du Concours de Logo pour les pulls de l'année 2021-2022\n **Pour rappel, pour que votre logo puisse paraître dans le concours il doit obligatoirement répondre aux critères suivant :**")
             .addFields(
                 {name: `${emote.emojis.arrow_right} Deux logos demandés`, value:`Un petit pour l'avant et un plus grand pour l'arrière (*dans le même thème mais différent l'un de l'autre*)`},
