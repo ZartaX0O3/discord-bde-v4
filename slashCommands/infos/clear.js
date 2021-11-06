@@ -10,14 +10,10 @@ module.exports = {
 
         const member = client.guilds.cache.get("700630434081669122").members.cache.get(interaction.user.id)
 
+        console.log(interaction.channel.id, interaction.channel.name, member)
         const embed = new MessageEmbed()
             .setColor("#f4cc5c")
             .setTitle(`${emote.emojis.yellow_circle} **Suppresion de messages**`)
-            .addFields(
-                {name: " ID Salon : ", value: `${interaction.channel.id}`},
-                {name: " Salon : ", value: `${interaction.channel.name}`},
-                {name: "Par :", value: `${member.tag}`}
-            )
 
         const select_menu = new MessageActionRow()
             .addComponents(new MessageSelectMenu()
