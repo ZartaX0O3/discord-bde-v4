@@ -23,6 +23,6 @@ module.exports = client => {
         .setColor("ffa600")
         .setTitle(`${emote.emojis.orange_circle} **Allumage du BOT v2**`)
 
-    client.guild.channels.cache.get(channels.sanctionLogsChannel).send({embeds: [embedReady]})
+    client.channels.cache.get(channels.sanctionLogsChannel).send({embeds: [embedReady]})
 
 }
