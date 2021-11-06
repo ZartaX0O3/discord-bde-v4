@@ -1,4 +1,4 @@
-const {MessageActionRow, MessageSelectMenu} = require("discord.js");
+const {MessageActionRow, MessageSelectMenu, MessageEmbed} = require("discord.js");
 const emote = require("../../emojis.json");
 
 module.exports = {
@@ -7,6 +7,15 @@ module.exports = {
     memberpermissions: ['MANAGE_MESSAGES'],
     type: 'CHAT_INPUT',
     run: async (client, interaction) => {
+
+        const embed = new MessageEmbed()
+            .setColor("#f4cc5c")
+            .setTitle(`${emote.emojis.yellow_circle} **Suppresion de messages**`)
+            .addFields(
+                {name: " ID Salon : ", value: `${interaction.channel.id}`},
+                {name: " Salon : ", value: `${interaction.channel.name}`},
+                {name: "Par :", value: `${interaction.author}`}
+            )
 
         const select_menu = new MessageActionRow()
             .addComponents(new MessageSelectMenu()
@@ -71,36 +80,47 @@ module.exports = {
                     iterator.deferUpdate();
                     interaction.channel.bulkDelete(3, true);
                     interaction.editReply({ content: `3 messages supprimés`, components: []})
+                    embed.addField("Nombre de message",3);
+                    interaction.channel.send({embeds: [embed]});
                     break;
 
                 case "two":
                     iterator.deferUpdate();
                     interaction.channel.bulkDelete(5, true);
                     interaction.editReply({ content: `5 messages supprimés`, components: []})
+                    embed.addField("Nombre de message",5);
+                    interaction.channel.send({embeds: [embed]});
                     break;
 
                 case "three":
                     iterator.deferUpdate();
                     interaction.channel.bulkDelete(10, true);
                     interaction.editReply({ content: `10 messages supprimés`, components: []})
+                    embed.addField("Nombre de message",10);
+                    interaction.channel.send({embeds: [embed]});
                     break;
 
                 case "four":
                     iterator.deferUpdate();
                     interaction.channel.bulkDelete(20, true);
                     interaction.editReply({ content: `20 messages supprimés`, components: []})
+                    embed.addField("Nombre de message",20);
+                    interaction.channel.send({embeds: [embed]});
                     break;
 
                 case "five":
                     iterator.deferUpdate();
                     interaction.channel.bulkDelete(35, true);
                     interaction.editReply({ content: `35 messages supprimés`, components: []})
+                    embed.addField("Nombre de message",35);
+                    interaction.channel.send({embeds: [embed]});
                     break;
             }
         });
         setTimeout(function () {
             interaction.editReply({content: "End of Interaction",components: []})
-        }, 60000);
+        }, 30000);
+
 
     }
 };
