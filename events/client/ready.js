@@ -2,7 +2,7 @@ const {MessageEmbed} = require("discord.js");
 const emote = require("../../emojis.json");
 const channels = require("../../channels.json");
 
-module.exports = (client,message) => {
+module.exports = client => {
     try{
         try{
             const stringlength = 69;
@@ -23,6 +23,6 @@ module.exports = (client,message) => {
         .setColor("ffa600")
         .setTitle(`${emote.emojis.orange_circle} **Allumage du BOT v2**`)
 
-    message.guild.channels.cache.get(channels.sanctionLogsChannel).send({embeds: [embedReady]})
+    client.guild.channels.cache.get(channels.sanctionLogsChannel).send({embeds: [embedReady]})
 
 }
