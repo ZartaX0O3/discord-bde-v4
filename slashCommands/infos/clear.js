@@ -2,8 +2,8 @@ const {MessageActionRow, MessageSelectMenu} = require("discord.js");
 const emote = require("../../emojis.json");
 
 module.exports = {
-    name: "liens",
-    description: "returns array of important links",
+    name: "clear",
+    description: "Delete an amount of message given",
     type: 'CHAT_INPUT',
     run: async (client, interaction) => {
 
