@@ -16,42 +16,42 @@ module.exports = {
                 .addOptions([
                     {
                         label: "3 messages",
-                        value: "1",
+                        value: "one",
                         description: "3 message to delete",
                         emoji: {
-                            name: "one", id: emote.numbers.id.one
+                            name: "one", id: `${emote.numbers.id.one}`
                         }
                     },
                     {
                         label: "5 messages",
-                        value: "2",
+                        value: "two",
                         description: "5 messages to delete",
                         emoji: {
-                            name: "two", id: emote.numbers.id.two
+                            name: "two", id: `${emote.numbers.id.two}`
                         }
                     },
                     {
                         label: "10 messages",
-                        value: "3",
+                        value: "three",
                         description: "10 messages to delete",
                         emoji: {
-                            name: "three", id: emote.numbers.id.three
+                            name: "three", id: `${emote.numbers.id.three}`
                         }
                     },
                     {
                         label: "20 messages",
-                        value: "4",
+                        value: "four",
                         description: "20 message to delete",
                         emoji: {
-                            name: "four", id: emote.numbers.id.four
+                            name: "four", id: `${emote.numbers.id.four}`
                         }
                     },
                     {
                         label: "35 messages",
-                        value: "5",
+                        value: "five",
                         description: "35 messages to delete",
                         emoji: {
-                            name: "five", id: emote.numbers.id.five
+                            name: "five", id: `${emote.numbers.id.five}`
                         }
                     }
                 ])
@@ -66,31 +66,31 @@ module.exports = {
 
         collectorMessage.on("collect", iterator => {
             switch(iterator.values[0]){
-                case "1":
+                case "one":
                     iterator.deferUpdate();
                     interaction.channel.bulkDelete(3, true);
                     interaction.editReply({ content: `3 messages supprimés`, components: []})
                     break;
 
-                case "2":
+                case "two":
                     iterator.deferUpdate();
                     interaction.channel.bulkDelete(5, true);
                     interaction.editReply({ content: `5 messages supprimés`, components: []})
                     break;
 
-                case "3":
+                case "three":
                     iterator.deferUpdate();
                     interaction.channel.bulkDelete(10, true);
                     interaction.editReply({ content: `10 messages supprimés`, components: []})
                     break;
 
-                case "4":
+                case "four":
                     iterator.deferUpdate();
                     interaction.channel.bulkDelete(20, true);
                     interaction.editReply({ content: `20 messages supprimés`, components: []})
                     break;
 
-                case "5":
+                case "five":
                     iterator.deferUpdate();
                     interaction.channel.bulkDelete(35, true);
                     interaction.editReply({ content: `35 messages supprimés`, components: []})
