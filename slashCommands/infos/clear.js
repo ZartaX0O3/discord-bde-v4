@@ -8,13 +8,15 @@ module.exports = {
     type: 'CHAT_INPUT',
     run: async (client, interaction) => {
 
+        const member = client.guilds.cache.get("700630434081669122").members.cache.get(interaction.user.id)
+
         const embed = new MessageEmbed()
             .setColor("#f4cc5c")
             .setTitle(`${emote.emojis.yellow_circle} **Suppresion de messages**`)
             .addFields(
                 {name: " ID Salon : ", value: `${interaction.channel.id}`},
                 {name: " Salon : ", value: `${interaction.channel.name}`},
-                {name: "Par :", value: `${interaction.author}`}
+                {name: "Par :", value: `${member.tag}`}
             )
 
         const select_menu = new MessageActionRow()
