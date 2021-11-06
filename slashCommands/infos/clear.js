@@ -4,6 +4,7 @@ const emote = require("../../emojis.json");
 module.exports = {
     name: "clear",
     description: "Delete an amount of message given",
+    memberpermissions: ['MANAGE_MESSAGES'],
     type: 'CHAT_INPUT',
     run: async (client, interaction) => {
 
