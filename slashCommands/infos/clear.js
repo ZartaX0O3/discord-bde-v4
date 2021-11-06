@@ -1,5 +1,6 @@
 const {MessageActionRow, MessageSelectMenu, MessageEmbed} = require("discord.js");
 const emote = require("../../emojis.json");
+const channels = require("../../channels.json");
 
 module.exports = {
     name: "clear",
@@ -16,7 +17,7 @@ module.exports = {
             .addFields(
                 {name: " ID Salon : ", value: `${interaction.channel.id}`},
                 {name: " Salon : ", value: `${interaction.channel.name}`},
-                {name: "Par :", value: `${member.name}`}
+                {name: "Par :", value: `${member.user.username}`}
             )
 
 
@@ -84,7 +85,7 @@ module.exports = {
                     interaction.channel.bulkDelete(3, true);
                     interaction.editReply({ content: `3 messages supprimés`, components: []})
                     embed.addField("Nombre de message",'3');
-                    interaction.channel.send({embeds: [embed]});
+                    interaction.guild.channels.cache.get(channels.sanctionLogsChannel).send({embeds: [embed]});
                     break;
 
                 case "two":
@@ -92,7 +93,7 @@ module.exports = {
                     interaction.channel.bulkDelete(5, true);
                     interaction.editReply({ content: `5 messages supprimés`, components: []})
                     embed.addField("Nombre de message",'5');
-                    interaction.channel.send({embeds: [embed]});
+                    interaction.guild.channels.cache.get(channels.sanctionLogsChannel).send({embeds: [embed]});
                     break;
 
                 case "three":
@@ -100,7 +101,7 @@ module.exports = {
                     interaction.channel.bulkDelete(10, true);
                     interaction.editReply({ content: `10 messages supprimés`, components: []})
                     embed.addField("Nombre de message",'10');
-                    interaction.channel.send({embeds: [embed]});
+                    interaction.guild.channels.cache.get(channels.sanctionLogsChannel).send({embeds: [embed]});
                     break;
 
                 case "four":
@@ -108,7 +109,7 @@ module.exports = {
                     interaction.channel.bulkDelete(20, true);
                     interaction.editReply({ content: `20 messages supprimés`, components: []})
                     embed.addField("Nombre de message",'20');
-                    interaction.channel.send({embeds: [embed]});
+                    interaction.guild.channels.cache.get(channels.sanctionLogsChannel).send({embeds: [embed]});
                     break;
 
                 case "five":
@@ -116,7 +117,7 @@ module.exports = {
                     interaction.channel.bulkDelete(35, true);
                     interaction.editReply({ content: `35 messages supprimés`, components: []})
                     embed.addField("Nombre de message",'35');
-                    interaction.channel.send({embeds: [embed]});
+                    interaction.guild.channels.cache.get(channels.sanctionLogsChannel).send({embeds: [embed]});
                     break;
             }
         });
