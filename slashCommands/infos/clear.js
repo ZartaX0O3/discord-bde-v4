@@ -10,10 +10,15 @@ module.exports = {
 
         const member = client.guilds.cache.get("700630434081669122").members.cache.get(interaction.user.id)
 
-        console.log(interaction.channel.id, interaction.channel.name, member)
         const embed = new MessageEmbed()
             .setColor("#f4cc5c")
             .setTitle(`${emote.emojis.yellow_circle} **Suppresion de messages**`)
+            .addFields(
+                {name: " ID Salon : ", value: `${interaction.channel.id}`},
+                {name: " Salon : ", value: `${interaction.channel.name}`},
+                {name: "Par :", value: `${member.name}`}
+            )
+
 
         const select_menu = new MessageActionRow()
             .addComponents(new MessageSelectMenu()
@@ -78,7 +83,7 @@ module.exports = {
                     iterator.deferUpdate();
                     interaction.channel.bulkDelete(3, true);
                     interaction.editReply({ content: `3 messages supprimés`, components: []})
-                    embed.addField("Nombre de message",3);
+                    embed.addField("Nombre de message",'3');
                     interaction.channel.send({embeds: [embed]});
                     break;
 
@@ -86,7 +91,7 @@ module.exports = {
                     iterator.deferUpdate();
                     interaction.channel.bulkDelete(5, true);
                     interaction.editReply({ content: `5 messages supprimés`, components: []})
-                    embed.addField("Nombre de message",5);
+                    embed.addField("Nombre de message",'5');
                     interaction.channel.send({embeds: [embed]});
                     break;
 
@@ -94,7 +99,7 @@ module.exports = {
                     iterator.deferUpdate();
                     interaction.channel.bulkDelete(10, true);
                     interaction.editReply({ content: `10 messages supprimés`, components: []})
-                    embed.addField("Nombre de message",10);
+                    embed.addField("Nombre de message",'10');
                     interaction.channel.send({embeds: [embed]});
                     break;
 
@@ -102,7 +107,7 @@ module.exports = {
                     iterator.deferUpdate();
                     interaction.channel.bulkDelete(20, true);
                     interaction.editReply({ content: `20 messages supprimés`, components: []})
-                    embed.addField("Nombre de message",20);
+                    embed.addField("Nombre de message",'20');
                     interaction.channel.send({embeds: [embed]});
                     break;
 
@@ -110,7 +115,7 @@ module.exports = {
                     iterator.deferUpdate();
                     interaction.channel.bulkDelete(35, true);
                     interaction.editReply({ content: `35 messages supprimés`, components: []})
-                    embed.addField("Nombre de message",35);
+                    embed.addField("Nombre de message",'35');
                     interaction.channel.send({embeds: [embed]});
                     break;
             }
