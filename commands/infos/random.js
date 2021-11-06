@@ -1,4 +1,4 @@
-const {MessageEmbed, MessageReaction} = require("discord.js");
+const {MessageEmbed} = require("discord.js");
 
 module.exports = {
     name: "random",
@@ -28,9 +28,7 @@ module.exports = {
 
         const embed = new MessageEmbed()
             .setColor("#000000")
-            .addFields(
-                {name: `Nombre aléatoire `, value: `${nombre}`},
-            )
+            .addField(`Nombre aléatoire `, `${nombre}`)
         message.channel.send({embeds : [embed]});
         message.delete();
     }

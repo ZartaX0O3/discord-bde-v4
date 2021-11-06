@@ -26,7 +26,7 @@ module.exports = {
 
     if (parseInt(args[0]) <= 0 || parseInt(args[0]) >= 99) return message.channel.send("Le nombre de messages à supprimer doit être compris entre 1 et 99.");
 
-    await message.channel.bulkDelete(args[0]+1);
+    await message.channel.bulkDelete(args[0]+1,true);
 
     const embed = new MessageEmbed()
         .setColor("#f4cc5c")

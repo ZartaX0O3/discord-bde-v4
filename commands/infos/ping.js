@@ -1,11 +1,9 @@
-const { Client, CommandInteraction } = require("discord.js");
-
 module.exports = {
         name: "ping",
         category: "Information",
         aliases: [],
         cooldown: 2,
-        usage: "ping",
+        usage: ">ping",
         description: "Renvoie de la latence BOT",
         memberpermissions: [],
         requiredroles: [],
