@@ -81,7 +81,6 @@ module.exports = {
         collectorMessage.on("collect", iterator => {
             switch(iterator.values[0]){
                 case "one":
-                    iterator.deferUpdate();
                     interaction.channel.bulkDelete(3, true);
                     interaction.followUp({embeds: [new MessageEmbed().setColor('GREEN').setDescription(`✅ Deleted 3 messages by ${member.user.username}`)]})
                     embed.addField("Nombre de message",'3');
@@ -89,16 +88,13 @@ module.exports = {
                     break;
 
                 case "two":
-                    iterator.deferUpdate();
                     interaction.channel.bulkDelete(5, true);
                     interaction.followUp({embeds: [new MessageEmbed().setColor('GREEN').setDescription(`✅ Deleted 5 messages by ${member.user.username}`)]})
-
                     embed.addField("Nombre de message",'5');
                     interaction.guild.channels.cache.get(channels.sanctionLogsChannel).send({embeds: [embed]});
                     break;
 
                 case "three":
-                    iterator.deferUpdate();
                     interaction.channel.bulkDelete(10, true);
                     interaction.followUp({embeds: [new MessageEmbed().setColor('GREEN').setDescription(`✅ Deleted 10 messages by ${member.user.username}`)]})
                     embed.addField("Nombre de message",'10');
@@ -106,7 +102,6 @@ module.exports = {
                     break;
 
                 case "four":
-                    iterator.deferUpdate();
                     interaction.channel.bulkDelete(20, true);
                     interaction.followUp({embeds: [new MessageEmbed().setColor('GREEN').setDescription(`✅ Deleted 20 messages by ${member.user.username}`)]})
                     embed.addField("Nombre de message",'20');
@@ -114,10 +109,8 @@ module.exports = {
                     break;
 
                 case "five":
-                    iterator.deferUpdate();
                     interaction.channel.bulkDelete(35, true);
                     interaction.followUp({embeds: [new MessageEmbed().setColor('GREEN').setDescription(`✅ Deleted 35 messages by ${member.user.username}`)]})
-
                     embed.addField("Nombre de message",'35');
                     interaction.guild.channels.cache.get(channels.sanctionLogsChannel).send({embeds: [embed]});
                     break;
