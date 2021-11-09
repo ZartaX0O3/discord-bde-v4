@@ -83,7 +83,7 @@ module.exports = {
                 case "one":
                     iterator.deferUpdate();
                     interaction.channel.bulkDelete(3, true);
-                    interaction.editReply({ content: `3 messages supprimés`, components: []})
+                    interaction.deleteReply();
                     embed.addField("Nombre de message",'3');
                     interaction.guild.channels.cache.get(channels.sanctionLogsChannel).send({embeds: [embed]});
                     break;
@@ -91,7 +91,7 @@ module.exports = {
                 case "two":
                     iterator.deferUpdate();
                     interaction.channel.bulkDelete(5, true);
-                    interaction.editReply({ content: `5 messages supprimés`, components: []})
+                    interaction.deleteReply();
                     embed.addField("Nombre de message",'5');
                     interaction.guild.channels.cache.get(channels.sanctionLogsChannel).send({embeds: [embed]});
                     break;
@@ -99,7 +99,7 @@ module.exports = {
                 case "three":
                     iterator.deferUpdate();
                     interaction.channel.bulkDelete(10, true);
-                    interaction.editReply({ content: `10 messages supprimés`, components: []})
+                    interaction.deleteReply();
                     embed.addField("Nombre de message",'10');
                     interaction.guild.channels.cache.get(channels.sanctionLogsChannel).send({embeds: [embed]});
                     break;
@@ -107,7 +107,7 @@ module.exports = {
                 case "four":
                     iterator.deferUpdate();
                     interaction.channel.bulkDelete(20, true);
-                    interaction.editReply({ content: `20 messages supprimés`, components: []})
+                    interaction.deleteReply();
                     embed.addField("Nombre de message",'20');
                     interaction.guild.channels.cache.get(channels.sanctionLogsChannel).send({embeds: [embed]});
                     break;
@@ -115,7 +115,7 @@ module.exports = {
                 case "five":
                     iterator.deferUpdate();
                     interaction.channel.bulkDelete(35, true);
-                    interaction.editReply({ content: `35 messages supprimés`, components: []})
+                    interaction.deleteReply();
                     embed.addField("Nombre de message",'35');
                     interaction.guild.channels.cache.get(channels.sanctionLogsChannel).send({embeds: [embed]});
                     break;
