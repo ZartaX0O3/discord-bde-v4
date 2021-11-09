@@ -6,6 +6,7 @@ module.exports = {
     name: "clear",
     description: "Delete an amount of message given",
     memberpermissions: ['MANAGE_MESSAGES'],
+    cooldown: 20,
     type: 'CHAT_INPUT',
     run: async (client, interaction) => {
 
@@ -81,44 +82,43 @@ module.exports = {
         collectorMessage.on("collect", iterator => {
             switch(iterator.values[0]){
                 case "one":
-                    interaction.channel.bulkDelete(3, true);
-                    interaction.editReply({embeds: [new MessageEmbed().setColor('GREEN').setDescription(`✅ Deleted 3 messages by ${member.user.username}`)], components: []})
-                    embed.addField("Nombre de message",'3');
-                    interaction.guild.channels.cache.get(channels.sanctionLogsChannel).send({embeds: [embed]});
                     iterator.deferUpdate()
+                    interaction.channel.bulkDelete(3, true);
+                    interaction.guild.channels.cache.get(channels.sanctionLogsChannel).send({embeds: [embed]});
+                    interaction.editReply({content: '.',embeds: [new MessageEmbed().setColor('GREEN').setDescription(`✅ Deleted 3 messages by ${member.user.username}`)], components: []})
+                    embed.addField("Nombre de message",'3');
                     break;
 
                 case "two":
-                    interaction.channel.bulkDelete(5, true);
-                    interaction.editReply({embeds: [new MessageEmbed().setColor('GREEN').setDescription(`✅ Deleted 5 messages by ${member.user.username}`)], components: []})
-
-                    embed.addField("Nombre de message",'5');
-                    interaction.guild.channels.cache.get(channels.sanctionLogsChannel).send({embeds: [embed]});
                     iterator.deferUpdate()
+                    interaction.channel.bulkDelete(5, true);
+                    interaction.guild.channels.cache.get(channels.sanctionLogsChannel).send({embeds: [embed]});
+                    interaction.editReply({content: '.',embeds: [new MessageEmbed().setColor('GREEN').setDescription(`✅ Deleted 5 messages by ${member.user.username}`)], components: []})
+                    embed.addField("Nombre de message",'5');
                     break;
 
                 case "three":
-                    interaction.channel.bulkDelete(10, true);
-                    interaction.editReply({embeds: [new MessageEmbed().setColor('GREEN').setDescription(`✅ Deleted 10 messages by ${member.user.username}`)], components: []})
-                    embed.addField("Nombre de message",'10');
-                    interaction.guild.channels.cache.get(channels.sanctionLogsChannel).send({embeds: [embed]});
                     iterator.deferUpdate()
+                    interaction.channel.bulkDelete(10, true);
+                    interaction.guild.channels.cache.get(channels.sanctionLogsChannel).send({embeds: [embed]});
+                    interaction.editReply({content: '.',embeds: [new MessageEmbed().setColor('GREEN').setDescription(`✅ Deleted 10 messages by ${member.user.username}`)], components: []})
+                    embed.addField("Nombre de message",'10');
                     break;
 
                 case "four":
-                    interaction.channel.bulkDelete(20, true);
-                    interaction.editReply({embeds: [new MessageEmbed().setColor('GREEN').setDescription(`✅ Deleted 20 messages by ${member.user.username}`)], components: []})
-                    embed.addField("Nombre de message",'20');
-                    interaction.guild.channels.cache.get(channels.sanctionLogsChannel).send({embeds: [embed]});
                     iterator.deferUpdate()
+                    interaction.channel.bulkDelete(20, true);
+                    interaction.guild.channels.cache.get(channels.sanctionLogsChannel).send({embeds: [embed]});
+                    interaction.editReply({content: '.',embeds: [new MessageEmbed().setColor('GREEN').setDescription(`✅ Deleted 20 messages by ${member.user.username}`)], components: []})
+                    embed.addField("Nombre de message",'20');
                     break;
 
                 case "five":
-                    interaction.channel.bulkDelete(35, true);
-                    interaction.editReply({embeds: [new MessageEmbed().setColor('GREEN').setDescription(`✅ Deleted 35 messages by ${member.user.username}`)], components: []})
-                    embed.addField("Nombre de message",'35');
-                    interaction.guild.channels.cache.get(channels.sanctionLogsChannel).send({embeds: [embed]});
                     iterator.deferUpdate()
+                    interaction.channel.bulkDelete(35, true);
+                    interaction.guild.channels.cache.get(channels.sanctionLogsChannel).send({embeds: [embed]});
+                    interaction.editReply({content: '.',embeds: [new MessageEmbed().setColor('GREEN').setDescription(`✅ Deleted 35 messages by ${member.user.username}`)], components: []})
+                    embed.addField("Nombre de message",'35');
                     break;
             }
         });
