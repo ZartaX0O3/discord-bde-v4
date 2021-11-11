@@ -78,6 +78,7 @@ module.exports = (client) => {
                 if (pull.name && pull.description) {
                     let Command = new SlashCommandBuilder().setName(String(pull.name).toLowerCase()).setDescription(pull.description);
                     if(pull.options && pull.options.length > 0){
+                        console.log(pull.options + "QUOI");
                         for(const option of pull.options){
                             if(option.User && option.User.name && option.User.description){
                                 Command.addUserOption((op) =>

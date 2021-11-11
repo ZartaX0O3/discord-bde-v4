@@ -1,9 +1,10 @@
-
 const config = require(`../../botconfig/config.json`);
 const ee = require(`../../botconfig/embed.json`);
 const settings = require(`../../botconfig/settings.json`);
 const { escapeRegex, onCoolDown, replacemsg } = require("../../handler/functions");
 const Discord = require("discord.js");
+const CaseModels = require("../../models/caseSchema");
+
 
 module.exports = async (client, message) => {
 
@@ -31,6 +32,22 @@ module.exports = async (client, message) => {
             message.reply({embeds: [new Discord.MessageEmbed().setColor(ee.color).setFooter(ee.footertext, ee.footericon).setTitle(`:thumbsup: **My Prefix here, is __\`${prefix}\`__**`)]})
         }
         return;
+    }
+
+    let caseData;
+
+    try {
+        caseData = await CaseModels.findOne({userID: message.author.id});
+        if (!caseData) {
+            let Case = await CaseModels.create({
+                userID: message.member.id,
+                serverID: message.guild.id,
+                sanction: []
+            })
+            await Case.save();
+        }
+    } catch (err) {
+        console.log(err);
     }
 
     let command = client.commands.get(cmd);
