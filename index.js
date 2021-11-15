@@ -44,7 +44,7 @@ client.categories = require("fs").readdirSync(`./commands`);
 
 
 
-mongoose.connect("mongodb+srv://ZartaX0O3:vn5rBLGucgs6Q8kW@cluster0.77kiy.mongodb.net/DiscordBot?retryWrites=true&w=majority", {
+mongoose.connect(process.env.MONGODB_SRV, {
     useNewUrlParser: true,
     useFindAndModify: false,
     useUnifiedTopology: true,
