@@ -3,9 +3,7 @@ const mongoose = require("mongoose")
 const Discord = require("discord.js");
 
 const client = new Discord.Client({
-    //fetchAllMembers: false,
-    //restTimeOffset: 0,
-    //restWsBridgetimeout: 100,
+
     shards: "auto",
     allowedMentions: {
         parse: [ ],
