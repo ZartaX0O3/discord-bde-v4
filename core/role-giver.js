@@ -292,4 +292,4 @@ const removeRoleGame = async (reaction, user) => {
 }
 
 
-module.exports = {groupeGiver, yearGiver, giveRoleGame, removeRoleGame}
+module.exports = {groupeGiver, yearGiver, groupeGiver2 , giveRoleGame, removeRoleGame}

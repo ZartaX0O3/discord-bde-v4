@@ -1,4 +1,4 @@
-const {groupeGiver, giveRoleGame, yearGiver} = require("../../core/role-giver")
+const {groupeGiver, giveRoleGame, groupeGiver2, yearGiver} = require("../../core/role-giver")
 
 module.exports = async (client, messageReaction, user) => {
 
@@ -14,5 +14,6 @@ module.exports = async (client, messageReaction, user) => {
     await groupeGiver(messageReaction, user);
     await yearGiver(messageReaction, user);
     await giveRoleGame(messageReaction, user);
+    await groupeGiver2(messageReaction, user);
 
 }
