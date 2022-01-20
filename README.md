@@ -1,4 +1,4 @@
-<h1 align="center">Welcome to Discord_BDE_V4 👋</h1>
+<h1 align="center">React Developer Chat App 👋</h1>
 <p>
   <img alt="Version" src="https://img.shields.io/badge/version-2.1.0-blue.svg?cacheSeconds=2592000" />
   <img src="https://img.shields.io/badge/node-16.10.0-blue.svg"  alt="."/>
@@ -12,7 +12,7 @@
     <img alt="License: CC0 1.0 Universal" src="https://img.shields.io/github/license/ZartaX0O3/Discord_BDE_V4" />
   </a>
   <a href="https://twitter.com/ZartaX0O3" target="_blank">
-    <img alt="Twitter: ZartaX0O3" src="https://img.shields.io/twitter/follow/ZartaX0O3.svg?style=social" />
+    <img alt="Twitter: ZartaX0O3" src="https[://img.shields.io/twitter/follow/ZartaX0O3.svg](mongodb+srv://ZartaX0O3:FPni2tmkDLaawNub@cluster0.77kiy.mongodb.net/myFirstDatabase?retryWrites=true&w=majority)?style=social" />
   </a>
 </p>
 

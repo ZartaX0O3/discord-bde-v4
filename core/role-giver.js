@@ -20,6 +20,16 @@ const emojiToRoleIDGroupe = [
     [emojis.extra.rt, roles.licence.licenceRt]
 ]
 
+const emojiToRoleIDGroupe2A = [
+    [emojis.numbers.name.one, roles.deuxa2.groupe_1A],
+    [emojis.numbers.name.two, roles.deuxa2.groupe_2A],
+    [emojis.numbers.name.three, roles.deuxa2.groupe_3A],
+    [emojis.numbers.name.four, roles.deuxa2.groupe_1B],
+    [emojis.numbers.name.five, roles.deuxa2.groupe_2B],
+    [emojis.numbers.name.six, roles.deuxa2.groupe_3B],
+    [emojis.numbers.name.seven, roles.deuxa2.groupe_4B],
+]
+
 const emojiToRoleCateg = [
     [emojis.extra.IUT, roles.extra.finish],
     [emojis.extra.text, roles.extra.invite],
@@ -102,6 +112,50 @@ const groupeGiver = async (reaction, user) => {
                     }, 5000)
                 });
                 break;
+            }
+        }
+    }
+    reaction.users.remove(user.id);
+}
+
+const groupeGiver2 = async (reaction, user) => {
+
+    const {message, emoji} = reaction
+    if ( channels.chan5 !== message.channel.id ) return;
+    const member = message.guild.members.cache.get(user.id)
+
+    if (!member) return;
+
+    for(const [emojiID, roles] of emojiToRoleIDGroupe2A) {
+        if (member.roles.cache.has(roles)){
+            member.roles.remove(roles)
+        }
+    }
+
+    for (const [emojiID, role] of emojiToRoleIDGroupe2A) {
+        if ((emoji.name || emoji.id) === emojiID) {
+
+            let targetRole = role;
+
+            if(member.roles.cache.has(roles.extra.second_year) || member.roles.cache.has(roles.extra.first_year)){
+                if (!member.roles.cache.has(targetRole)) {
+                    member.roles.add(targetRole);
+                    message.channel.send(`<@${member.id}> à bien reçu son rôle !`).then(msg => {
+                        setTimeout(() => {
+                            msg.delete()
+                        }, 5000)
+                    });
+                    break;
+                }
+                else{
+                    member.roles.remove(targetRole);
+                    message.channel.send(`<@${member.id}> à bien retiré son rôle !`).then(msg => {
+                        setTimeout(() => {
+                            msg.delete()
+                        }, 5000)
+                    });
+                    break;
+                }
             }
         }
     }

@@ -46,7 +46,7 @@ module.exports = {
 
         for (const [number, roles] of group) {
 
-            if (args[0] == number) { // Ne pas mettre de  === ici !!!
+            if (args[0] === number) { // Ne pas mettre de  === ici !!!
                 groupe = roles;
             }
         }
