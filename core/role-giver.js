@@ -120,7 +120,6 @@ const groupeGiver = async (reaction, user) => {
 
 const groupeGiver2 = async (reaction, user) => {
 
-    console.log("oui ?");
     const {message, emoji} = reaction
     if ( channels.chan5 !== message.channel.id ) return;
     const member = message.guild.members.cache.get(user.id)

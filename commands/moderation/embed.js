@@ -1,5 +1,6 @@
 const {MessageEmbed} = require("discord.js");
 const emote = require("../../emojis.json");
+const roles = require("../../roles.json");
 
 module.exports = {
     name: "embed",
@@ -22,19 +23,27 @@ module.exports = {
         const noelEmbed = new MessageEmbed()
             .setColor("#070707")
             .setAuthor(message.member.user.username, message.member.user.displayAvatarURL())
-            .setTitle(` 🔶 Bonjour à tous 🔶`)
-            .setDescription("\nPour rappel :")
+            .setTitle(`${emote.emojis.IUT} Bienvenue sur le discord de l'IUT Informatique D'Aubière ! ${emote.emojis.IUT}`)
+            .setDescription("Choix des différents rôles de classes :")
             .addFields(
-                {name: `${emote.emojis.arrow_right} Jeudi 16 Décembre`, value:`---`},
-                {name:`${emote.emojis.arrow_right} 600 personnes (Inter IUT)`,value:`---`},
-                {name:`${emote.emojis.arrow_right} Prix 27€ pour adhérent, 30€ sinon`,value:`---`},
-                {name:`${emote.emojis.arrow_right} Alcool compris ainsi que le service (8 serveurs), un DJ et la salle`,value:`---`},
-                {name:`${emote.emojis.arrow_right} Ouvert aux externes`,value:`---`}
+                {name: `${emote.numbers.id_emote.one} - Groupe 1A`, value:`<@&${roles.deuxa2.groupe_1A}>`},
+                {name:`${emote.numbers.id_emote.two} - Groupe 2A`,value:`<@&${roles.deuxa2.groupe_2A}>`},
+                {name:`${emote.numbers.id_emote.three} - Groupe 3A`,value:`<@&${roles.deuxa2.groupe_3A}>`},
+                {name:`${emote.numbers.id_emote.four} - Groupe 1B`,value:`<@&${roles.deuxa2.groupe_1B}>`},
+                {name:`${emote.numbers.id_emote.five} - Groupe 2B`,value:`<@&${roles.deuxa2.groupe_2B}>`},
+                {name:`${emote.numbers.id_emote.six} - Groupe 3B`,value:`<@&${roles.deuxa2.groupe_3B}>`},
+                {name:`${emote.numbers.id_emote.seven} - Groupe 4B`,value:`<@&${roles.deuxa2.groupe_4B}>`}
             )
-            .addField('**Infos**','La soirée se déroulera à l\'Usine (NightClub), les inscriptions sont désormais ouvertes jusqu\'au 20 Novembre (après cela impossible de s\'inscrire donc dépêchez vous ! ).\n**Voici la décharge de responsabilité obligatoire pour tous le monde, nous la donnons en avance pour que tous le monde puisse déjà la faire signer (Signature électronique valide), début des réservations lundi de la rentrée**')
-            .setImage('https://cdn.discordapp.com/attachments/832304727206789170/906140700259794974/IMG_4900.jpg')
             .setFooter('BDE ASCII','https://cdn.discordapp.com/attachments/832305040344481822/906146823062847508/logo.png')
 
-        message.channel.send({embeds : [noelEmbed]});
+        message.channel.send({embeds : [noelEmbed]}).then( m => {
+            m.react(emote.numbers.id.one);
+            m.react(emote.numbers.id.two);
+            m.react(emote.numbers.id.three);
+            m.react(emote.numbers.id.four);
+            m.react(emote.numbers.id.five);
+            m.react(emote.numbers.id.six)
+            m.react(emote.numbers.id.seven);
+        })
     }
 }
