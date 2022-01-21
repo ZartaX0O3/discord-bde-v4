@@ -1,6 +1,8 @@
 const { Collection } = require("discord.js");
 const mongoose = require("mongoose")
 const Discord = require("discord.js");
+const dotenv = require('dotenv');
+dotenv.config();
 
 const client = new Discord.Client({
 
@@ -41,8 +43,6 @@ client.categories = require("fs").readdirSync(`./commands`);
     .forEach(h => {
         require(`./handler/${h}`)(client);
     })
-
-
 
 mongoose.connect(process.env.MONGODB_SRV, {
     useNewUrlParser: true,
