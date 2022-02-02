@@ -5,7 +5,7 @@ module.exports = async (client, messageReaction, user) => {
 
     const {message} = messageReaction;
 
-    if (message.channel.type !== "text") return;
+    if (message.channel.type !== 'GUILD_TEXT') return;
 
     if (messageReaction.partial) await messageReaction.fetch();
     if (message.partial) await message.fetch();

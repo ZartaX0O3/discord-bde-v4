@@ -98,6 +98,7 @@ module.exports = async (client, message) => {
 
             //if Command has specific users return error
             if (command.alloweduserids && command.alloweduserids.length > 0 && !command.alloweduserids.includes(message.author.id)) {
+                console.log("fuck")
                 return message.reply({embeds: [new Discord.MessageEmbed()
                         .setColor(ee.wrongcolor)
                         .setFooter(ee.footertext, ee.footericon)
