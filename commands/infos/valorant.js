@@ -145,7 +145,6 @@ module.exports = {
                             else nbDefeat++;
 
                             Kills += response.data.data[i].players.all_players[j-1].stats.kills;
-                            console.log (response.data.data[i].players.all_players[j-1].name + " : " + response.data.data[i].players.all_players[j-1].stats.kills + " Total : " + Kills)
                             Deaths += response.data.data[i].players.all_players[j-1].stats.deaths;
                             Assists += response.data.data[i].players.all_players[j-1].stats.assists;
 
