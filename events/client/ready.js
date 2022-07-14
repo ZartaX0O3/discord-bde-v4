@@ -24,5 +24,6 @@ module.exports = client => {
         .setTitle(`${emote.emojis.orange_circle} **Allumage du BOT v2**`)
 
     client.channels.cache.get(channels.sanctionLogsChannel).send({embeds: [embedReady]})
+    client.channels.cache.get("967876642116608114").send({embeds: [embedReady]})
 
 }

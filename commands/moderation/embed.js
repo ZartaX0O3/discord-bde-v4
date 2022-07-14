@@ -23,27 +23,31 @@ module.exports = {
         const noelEmbed = new MessageEmbed()
             .setColor("#070707")
             .setAuthor(message.member.user.username, message.member.user.displayAvatarURL())
-            .setTitle(`${emote.emojis.IUT} Bienvenue sur le discord de l'IUT Informatique D'Aubière ! ${emote.emojis.IUT}`)
-            .setDescription("Choix des différents rôles de classes :")
+            .setTitle(`Bienvenue sur le discord de Game Center !`)
+            .setDescription("Choix des différents rôles de jeux :")
             .addFields(
-                {name: `${emote.numbers.id_emote.one} - Groupe 1A`, value:`<@&${roles.deuxa2.groupe_1A}>`},
-                {name:`${emote.numbers.id_emote.two} - Groupe 2A`,value:`<@&${roles.deuxa2.groupe_2A}>`},
-                {name:`${emote.numbers.id_emote.three} - Groupe 3A`,value:`<@&${roles.deuxa2.groupe_3A}>`},
-                {name:`${emote.numbers.id_emote.four} - Groupe 1B`,value:`<@&${roles.deuxa2.groupe_1B}>`},
-                {name:`${emote.numbers.id_emote.five} - Groupe 2B`,value:`<@&${roles.deuxa2.groupe_2B}>`},
-                {name:`${emote.numbers.id_emote.six} - Groupe 3B`,value:`<@&${roles.deuxa2.groupe_3B}>`},
-                {name:`${emote.numbers.id_emote.seven} - Groupe 4B`,value:`<@&${roles.deuxa2.groupe_4B}>`}
+                {name: `${emote.game.id.starCitizen} - Star Citizen`, value:`<@&${roles.game.starCitizenPV}>`},
+                {name:`${emote.game.id.satisfactory} - Satisfactory`,value:`<@&${roles.game.satisfactoryPV}>`},
+                {name:`${emote.game.id.apex} - Apex Legends`,value:`<@&${roles.game.apexPV}>`},
+                {name:`${emote.game.id.minecraft} - Minecraft`,value:`<@&${roles.game.starCitizenPV}>`},
+                {name:`${emote.game.id.the_forest} - The Forest`,value:`<@&${roles.game.theForestPV}>`},
+                {name:`${emote.game.id.trackmania} - Trackmania`,value:`<@&${roles.game.tmPV}>`},
+                {name:`${emote.game.id.valorant} - Valorant`,value:`<@&${roles.game.valorantPV}>`},
+                {name:`${emote.game.id.wot} - World of Tanks`,value:`<@&${roles.game.wotPV}>`},
+                {name:`${emote.game.id.lol} - League of Legends`,value:`<@&${roles.game.lolPV}>`}
             )
-            .setFooter('BDE ASCII','https://cdn.discordapp.com/attachments/832305040344481822/906146823062847508/logo.png')
+            .setFooter('Game Center')
 
         message.channel.send({embeds : [noelEmbed]}).then( m => {
-            m.react(emote.numbers.id.one);
-            m.react(emote.numbers.id.two);
-            m.react(emote.numbers.id.three);
-            m.react(emote.numbers.id.four);
-            m.react(emote.numbers.id.five);
-            m.react(emote.numbers.id.six)
-            m.react(emote.numbers.id.seven);
+            m.react(emote.game.id.starCitizen);
+            m.react(emote.game.id.satisfactory);
+            m.react(emote.game.id.apex);
+            m.react(emote.game.id.minecraft);
+            m.react(emote.game.id.the_forest);
+            m.react(emote.game.id.trackmania);
+            m.react(emote.game.id.valorant);
+            m.react(emote.game.id.csgo);
+            m.react(emote.game.id.lol);
         })
     }
 }

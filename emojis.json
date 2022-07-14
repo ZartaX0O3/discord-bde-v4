@@ -90,17 +90,29 @@
             "rocketleague" : "rocket",
             "lol" : "Lol",
             "osu" : "Osu",
-            "summoner" : "summonerswar"
+            "summoner" : "summonerswar",
+            "apex": "apexlogoF74B0C9FCDseeklogo",
+            "starCitizen" : "StarCitizen",
+            "the_forest" : "theforest",
+            "satisfactory" : "satisfactory",
+            "trackmania" : "Trackmania_2020_logo",
+            "wot" : "wot"
         },
         "id" : {
             "valorant" : "<:valorant:834777364507525150>",
-            "csgo" : "<:CSGOLogo:834777521508843571>",
+            "csgo" : "<:wot:997159605891235930>",
             "minecraft" : "<:minecraft:834777570100379668>",
             "overwatch" : "<:overwatch:834777348901437470>",
             "rocketleague" : "<:rocket:834777524940177458>",
             "lol" : "<:Lol:834777567394267210>",
-            "osu" : "<:Osu:834777474432499723>",
-            "summoner" : "<:summonerswar:834778123727798305>"
+            "osu" : "\uD83D\uDCE1",
+            "summoner" : "<:summonerswar:834778123727798305>",
+            "apex": "<:apexlogoF74B0C9FCDseeklogo:889083057997500417>",
+            "starCitizen" : "<:StarCitizen:997162547734126743>",
+            "the_forest" : "<:theforest:997162198931603517>",
+            "satisfactory" : "<:satisfactory:997162808078766190>",
+            "trackmania" : "<:Trackmania_2020_logo:997163049234468956>",
+            "wot" : "<:wot:997159605891235930>"
         }
     },
     "ressources" : {

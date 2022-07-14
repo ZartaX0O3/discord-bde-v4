@@ -1,4 +1,3 @@
-
 const channels = require("../channels.json");
 const emojis = require("../emojis.json");
 const roles = require("../roles.json");
@@ -50,16 +49,28 @@ const emojiToRoleIDGame = [
     [emojis.game.name.apex, roles.game.apex]
 ]
 
+const emojiToRoleIDGamePrivate = [
+    [emojis.game.name.valorant, roles.game.valorantPV],
+    [emojis.game.name.wot, roles.game.wotPV],
+    [emojis.game.name.trackmania, roles.game.tmPV],
+    [emojis.game.name.minecraft, roles.game.minecraftPV],
+    [emojis.game.name.satisfactory, roles.game.satisfactoryPV],
+    [emojis.game.name.lol, roles.game.lolPV],
+    [emojis.game.name.the_forest, roles.game.theForestPV],
+    [emojis.game.name.apex, roles.game.apexPV],
+    [emojis.game.name.starCitizen, roles.game.starCitizenPV]
+]
+
 const groupeGiver = async (reaction, user) => {
 
     const {message, emoji} = reaction
-    if ( channels.chan3 !== message.channel.id ) return;
+    if (channels.chan3 !== message.channel.id) return;
     const member = message.guild.members.cache.get(user.id)
 
     if (!member) return;
 
-    for(const [emojiID, roles] of emojiToRoleIDGroupe) {
-        if (member.roles.cache.has(roles)){
+    for (const [emojiID, roles] of emojiToRoleIDGroupe) {
+        if (member.roles.cache.has(roles)) {
             member.roles.remove(roles)
         }
     }
@@ -69,9 +80,9 @@ const groupeGiver = async (reaction, user) => {
 
             let targetRole = role;
 
-            if(member.roles.cache.has(roles.extra.second_year)){
-                if(targetRole === roles.groupe.groupe_9 || targetRole === roles.groupe.groupe_10){
-                
+            if (member.roles.cache.has(roles.extra.second_year)) {
+                if (targetRole === roles.groupe.groupe_9 || targetRole === roles.groupe.groupe_10) {
+
                     message.channel.send("Il n'y a pas de groupe 9 et 10 pour les deuxième années :(").then(msg => {
                         setTimeout(() => {
                             msg.delete()
@@ -82,8 +93,8 @@ const groupeGiver = async (reaction, user) => {
                 }
             }
 
-            if(member.roles.cache.has(roles.extra.second_year) || member.roles.cache.has(roles.extra.first_year)){
-                if(targetRole === roles.licence.licencePm || targetRole === roles.licence.licenceWeb || targetRole === roles.licence.licenceRt){
+            if (member.roles.cache.has(roles.extra.second_year) || member.roles.cache.has(roles.extra.first_year)) {
+                if (targetRole === roles.licence.licencePm || targetRole === roles.licence.licenceWeb || targetRole === roles.licence.licenceRt) {
 
                     message.channel.send("Impossible de récupérer ce rôle en tant que 1A ou 2A").then(msg => {
                         setTimeout(() => {
@@ -95,7 +106,7 @@ const groupeGiver = async (reaction, user) => {
                 }
             }
 
-            if (!member.roles.cache.has(targetRole)) {    
+            if (!member.roles.cache.has(targetRole)) {
                 member.roles.add(targetRole);
                 message.channel.send(`<@${member.id}> à bien reçu son rôle !`).then(msg => {
                     setTimeout(() => {
@@ -103,8 +114,7 @@ const groupeGiver = async (reaction, user) => {
                     }, 5000)
                 });
                 break;
-            }
-            else{
+            } else {
                 member.roles.remove(targetRole);
                 message.channel.send(`<@${member.id}> à bien retiré son rôle !`).then(msg => {
                     setTimeout(() => {
@@ -121,13 +131,13 @@ const groupeGiver = async (reaction, user) => {
 const groupeGiver2 = async (reaction, user) => {
 
     const {message, emoji} = reaction
-    if ( channels.chan5 !== message.channel.id ) return;
+    if (channels.chan5 !== message.channel.id) return;
     const member = message.guild.members.cache.get(user.id)
 
     if (!member) return;
 
-    for(const [emojiID, roles] of emojiToRoleIDGroupe2A) {
-        if (member.roles.cache.has(roles)){
+    for (const [emojiID, roles] of emojiToRoleIDGroupe2A) {
+        if (member.roles.cache.has(roles)) {
             member.roles.remove(roles)
         }
     }
@@ -137,7 +147,7 @@ const groupeGiver2 = async (reaction, user) => {
 
             let targetRole = role;
 
-            if(member.roles.cache.has(roles.extra.second_year) || member.roles.cache.has(roles.extra.first_year)){
+            if (member.roles.cache.has(roles.extra.second_year) || member.roles.cache.has(roles.extra.first_year)) {
                 if (!member.roles.cache.has(targetRole)) {
                     member.roles.add(targetRole);
                     message.channel.send(`<@${member.id}> à bien reçu son rôle !`).then(msg => {
@@ -146,8 +156,7 @@ const groupeGiver2 = async (reaction, user) => {
                         }, 5000)
                     });
                     break;
-                }
-                else{
+                } else {
                     member.roles.remove(targetRole);
                     message.channel.send(`<@${member.id}> à bien retiré son rôle !`).then(msg => {
                         setTimeout(() => {
@@ -166,27 +175,27 @@ const yearGiver = async (reaction, user) => {
 
     const {message, emoji} = reaction
 
-    if ( channels.chan4 !== message.channel.id ) return;
+    if (channels.chan4 !== message.channel.id) return;
 
     const member = message.guild.members.cache.get(user.id)
 
     if (!member) return;
 
-    for(const [emojiID, role] of emojiToRoleCateg) {
+    for (const [emojiID, role] of emojiToRoleCateg) {
 
-        if (member.roles.cache.has(role)){
+        if (member.roles.cache.has(role)) {
             member.roles.remove(role);
-        };
-        
+        }
+
     }
 
     for (const [emojiID, role] of emojiToRoleCateg) {
 
         if ((emoji.name || emoji.id) === emojiID) {
-            
+
             let targetRole = role;
 
-            if(targetRole === roles.extra.professor){
+            if (targetRole === roles.extra.professor) {
 
                 message.channel.send("Veuillez contacter un Administrateur pour récupérer ce rôle ! (Via un channel d'aide ou en message privé)").then(msg => {
                     setTimeout(() => {
@@ -195,12 +204,12 @@ const yearGiver = async (reaction, user) => {
                 });
 
                 const embed = new MessageEmbed()
-                .setColor("#000000")
-                .setTitle(`${emojis.emojis.black_circle} **Demande de rôle Professeur**`)
-                .addFields(
-                    {name: "Joueur :", value: member.user.tag},
-                )
-                .setTimestamp()
+                    .setColor("#000000")
+                    .setTitle(`${emojis.emojis.black_circle} **Demande de rôle Professeur**`)
+                    .addFields(
+                        {name: "Joueur :", value: member.user.tag},
+                    )
+                    .setTimestamp()
                 message.guild.channels.cache.get(channels.sanctionLogsChannel).send(embed);
                 break;
 
@@ -217,9 +226,7 @@ const yearGiver = async (reaction, user) => {
 
                 break;
 
-            }
-
-            else{
+            } else {
 
                 member.roles.remove(targetRole);
                 message.channel.send(`<@${member.id}> à bien retité son rôle !`).then(msg => {
@@ -239,25 +246,24 @@ const giveRoleGame = async (reaction, user) => {
 
     const {message, emoji} = reaction
 
-    if (message.channel.id !== channels.game_channel) return;
+    if (message.channel.id !== "997160453149032578" ) return;
 
     const member = message.guild.members.cache.get(user.id)
 
     if (!member) return;
 
-    for (const [emojiID, role] of emojiToRoleIDGame) {
 
-        if ((emoji.name || emoji.id) === emojiID) {
-            let targetRole = role;
+    if (message.guild.id === "967517880524607538") {
 
-            if (!member.roles.cache.has(targetRole)) {
-                member.roles.add(targetRole);
+        for (const [emojiID, role] of emojiToRoleIDGamePrivate) {
 
-                if (!member.roles.cache.has(roles.extra.jeux)) {
-                    member.roles.add(roles.extra.jeux);
+            if (emoji.name === emojiID) {
+
+                let targetRole = role;
+
+                if (!member.roles.cache.has(targetRole)) {
+                    member.roles.add(targetRole);
                 }
-
-                break;
             }
         }
     }
@@ -267,29 +273,29 @@ const giveRoleGame = async (reaction, user) => {
 const removeRoleGame = async (reaction, user) => {
 
     const {message, emoji} = reaction
-
-    if (message.channel.id !== channels.game_channel) return;
+    console.log(emoji.name)
+    if (message.channel.id !== "997160453149032578" ) return;
 
     const member = message.guild.members.cache.get(user.id)
 
     if (!member) return;
 
-    let nbrRoleGame = 0;
+    if (message.guild.id === "967517880524607538") {
 
-    for (const [emojiID, role] of emojiToRoleIDGame) {
+        for (const [emojiID, role] of emojiToRoleIDGamePrivate) {
 
-        if ((emoji.name || emoji.id) === emojiID) {
+            if (emoji.name === emojiID) {
+                console.log(emoji.name)
 
-            if (member.roles.cache.has(role)) {
-                await member.roles.remove(role);
+                let targetRole = role;
+
+                if (member.roles.cache.has(targetRole)) {
+                    member.roles.remove(targetRole);
+                }
             }
         }
-
-        if (member.roles.cache.has(role)) nbrRoleGame++;
     }
-
-    if (nbrRoleGame === 0) member.roles.remove(roles.extra.jeux)
 }
 
 
-module.exports = {groupeGiver, yearGiver, groupeGiver2 , giveRoleGame, removeRoleGame}
+module.exports = {groupeGiver, yearGiver, groupeGiver2, giveRoleGame, removeRoleGame}

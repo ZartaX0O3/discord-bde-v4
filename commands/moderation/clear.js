@@ -26,7 +26,7 @@ module.exports = {
 
     if (parseInt(args[0]) <= 0 || parseInt(args[0]) >= 99) return message.channel.send("Le nombre de messages à supprimer doit être compris entre 1 et 99.");
 
-    await message.channel.bulkDelete(args[0]+1,true);
+    await message.channel.bulkDelete(args[0],true);
 
     const embed = new MessageEmbed()
         .setColor("#f4cc5c")
@@ -38,7 +38,7 @@ module.exports = {
             {name: "Par :", value: `${message.author}`}
         )
 
-    message.guild.channels.cache.get(channels.sanctionLogsChannel).send({embeds: [embed]})
+        client.channels.cache.get("967876642116608114").send({embeds: [embed]})
     message.channel.send(`Vous avez supprimé ${args[0]} message(s)`).then(msg => {
         setTimeout(() => {
             msg.delete()
