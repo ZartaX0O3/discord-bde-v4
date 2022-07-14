@@ -73,7 +73,8 @@ module.exports = {
                                 ranking_in_tier: response.data.data.ranking_in_tier,
                                 elo: response.data.data.elo,
                                 cardURL_small: dataPlayer.small,
-                                cardURL_large: dataPlayer.large
+                                cardURL_large: dataPlayer.large,
+                                cardURL_wide: dataPlayer.wide
                             })
 
                             await valorant.save();

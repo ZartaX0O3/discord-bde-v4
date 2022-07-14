@@ -8,7 +8,8 @@ const valorantSchema = new mongoose.Schema({
     ranking_in_tier: {type: Number},
     elo: { type: Number},
     cardURL_small : {type: String},
-    cardURL_large : {type: String}
+    cardURL_large : {type: String},
+    cardURL_wide : {type: String}
 });
 
 const model = mongoose.model("valorantModels", valorantSchema);

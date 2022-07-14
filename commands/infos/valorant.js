@@ -16,7 +16,7 @@ module.exports = {
     requiredroles: [],
     alloweduserids: [],
     minargs: 0, // minimum args for the message, 0 == none [OPTIONAL]
-    maxargs: 1, // maximum args for the message, 0 == none [OPTIONAL]
+    maxargs: 0, // maximum args for the message, 0 == none [OPTIONAL]
     minplusargs: 0, // minimum args for the message, splitted with "++" , 0 == none [OPTIONAL]
     maxplusargs: 0, // maximum args for the message, splitted with "++" , 0 == none [OPTIONAL]
     argsmissing_message: "", //Message if the user has not enough args / not enough plus args, which will be sent, leave emtpy / dont add, if you wanna use command.usage or the default message! [OPTIONAL]
@@ -122,24 +122,70 @@ module.exports = {
                     break;
             }
 
-            let data, KDRatio, KDAssist, rankName, Kills, Deaths, Assists, MostKills, Playtime, player;
+            let rankName = valorantProfile.rank, Kills=0, Deaths=0, Assists=0, MostKills = 0, Playtime=0, player, nbVictory = 0, nbDefeat = 0, playerColor, KDA, KDR;
 
             axios.get('https://api.henrikdev.xyz/valorant/v3/matches/eu/' + valorantProfile.name + '/' + valorantProfile.tag + '?filter=competitive')
                 .then(async function (response) {
                     try {
-                        data = response
-                        console.log('https://api.henrikdev.xyz/valorant/v3/matches/eu/' + valorantProfile.name + '/' + valorantProfile.tag + '?filter=competitive')
+
                         for(let i = 0; i < 5; i++){
                             Playtime += response.data.data[i].metadata.game_length;
                             let j = 0;
 
                             while(player !== valorantProfile.name){
                                 player = response.data.data[i].players.all_players[j].name;
-                                console.log(player + " " + response.data.data[i].players.all_players[j].stats.kills);
+                                playerColor = response.data.data[i].players.all_players[j].team.toLowerCase()
                                 j++;
                             }
 
+                            player = null;
+
+
+                            if((response.data.data[i].teams.red.has_won === true && playerColor === "red") || (response.data.data[i].teams.blue.has_won === true && playerColor === "blue")) nbVictory++;
+                            else nbDefeat++;
+
+                            Kills += response.data.data[i].players.all_players[j-1].stats.kills;
+                            console.log (response.data.data[i].players.all_players[j-1].name + " : " + response.data.data[i].players.all_players[j-1].stats.kills + " Total : " + Kills)
+                            Deaths += response.data.data[i].players.all_players[j-1].stats.deaths;
+                            Assists += response.data.data[i].players.all_players[j-1].stats.assists;
+
+                            if(MostKills > response.data.data[i].players.all_players[j-1].stats.kills) continue;
+                            else MostKills = response.data.data[i].players.all_players[j-1].stats.kills;
+
                         }
+
+                        KDR = parseFloat((Kills/Deaths).toFixed(2))
+                        KDA = parseFloat(((Kills + Assists)/Deaths).toFixed(2))
+
+                        let hours = Math.floor(Playtime / 60 / 60);
+                        let minutes = Math.floor(Playtime / 60) - (hours * 60);
+                        let seconds = Playtime % 60;
+                        let formatted = hours + ':' + minutes + ':' + seconds;
+
+                        const Embed = new MessageEmbed()
+                            .setColor("#070707")
+                            .setAuthor(message.member.user.username, valorantProfile.cardURL_small)
+                            .setThumbnail(rankImage)
+                            .setTitle(`Valorant Player Stats`)
+                            .setDescription("In-game stats from the last 5 games")
+                            .setFooter('Developed by ZartaX0O3')
+                            .addFields(
+                                { name: 'KDR', value: "```yaml\n" + KDR + "\n```", inline: true },
+                                { name: 'KDA', value: "```yaml\n" + KDA  + "\n```", inline: true },
+                                { name: 'Rank ', value: "```grey\n" + valorantProfile.currenttierpatched + "\n```", inline: true },
+                                { name: 'Kills', value: "```yaml\n" + Kills + "\n```", inline: true },
+                                { name: 'Deaths', value: "```yaml\n" + Deaths + "```", inline: true },
+                                { name: 'Assists', value: "```yaml\n" + Assists + "\n```", inline: true },
+                                { name: 'Most Kills', value: "```yaml\n" + MostKills + "\n```", inline: true },
+                                { name: 'Playtime', value: "```yaml\n" + formatted + "\n```", inline: true },
+                                {
+                                    name: 'Win Rate', value: nbVictory/(nbVictory+nbDefeat)*100 + "% ```yaml\n" + "    W: "
+                                        + nbVictory + "   |   L: " + nbDefeat + "\n```", inline: false
+                                },
+                            )
+                            .setImage(valorantProfile.cardURL_wide)
+
+                        message.channel.send({embeds : [Embed]})
 
                     } catch (err) {
                         console.log(err);
@@ -164,35 +210,7 @@ module.exports = {
                     message.channel.send({embeds : [errorEmbed]});
                     message.delete();
                 });
-
-            /*
-            const Embed = new MessageEmbed()
-                .setColor("#070707")
-                .setAuthor(message.member.user.username, valorantProfile.cardURL_small)
-                .setThumbnail(valorantProfile.cardURL_small)
-                .setTitle(`Valorant Player Stats`)
-                .setDescription("Ingame stats from the last 5 games")
-                .setFooter('Developed by ZartaX0O3')
-                .addFields(
-                { name: 'KDR', value: "```yaml\n" + - + "\n```", inline: true },
-                { name: 'KDA', value: "```yaml\n" + - + "\n```", inline: true },
-                { name: 'Rank ' + rankImage, value: "```grey\n" + - + "\n```", inline: true },
-                { name: 'Kills', value: "```yaml\n" + - + "\n```", inline: true },
-                { name: 'Deaths', value: "```yaml\n" + - + "```", inline: true },
-                { name: 'Assists', value: "```yaml\n" + - + "\n```", inline: true },
-                { name: 'Most Kills', value: "```yaml\n" + - + "\n```", inline: true },
-                { name: 'Playtime', value: "```yaml\n" + - + "\n```", inline: true },
-                {
-                    name: 'Win Rate - ' + compStats.matchesWinPct.displayValue, value: winRate + " ```yaml\n" + "    W: "
-                        + compStats.matchesWon.displayValue + "   |   L: " + compStats.matchesLost.displayValue + "\n```", inline: false
-                },
-            )
-
-            message.channel.send({embeds : [Embed]})
-            */
-
-
-        }
+            }
 
 
     }
