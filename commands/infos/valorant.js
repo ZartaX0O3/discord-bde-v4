@@ -124,9 +124,28 @@ module.exports = {
 
             let rankName = valorantProfile.rank, Kills=0, Deaths=0, Assists=0, MostKills = 0, Playtime=0, player, nbVictory = 0, nbDefeat = 0, playerColor, KDA, KDR;
 
+            const errorEmbed = new MessageEmbed()
+                .setColor('#d1390f')
+                .setAuthor(message.member.user.username, 'https://cdn.discordapp.com/attachments/834195818080108564/932365602427920404/x-png-35400.png')
+                .setFooter('Developed by ZartaX0O3')
+                .addFields(
+                    {
+                        name: 'Error Status',
+                        value: "```diff\n" + "Please ensure the account you are trying to view has" +
+                            " logged into tracker.gg/valorant !\n\nExample:\n1. Click 'Sign in with Riot ID'\n2.\n\n"
+                            + "\n```",
+                        inline: true
+                    },
+                )
+
             axios.get('https://api.henrikdev.xyz/valorant/v3/matches/eu/' + valorantProfile.name + '/' + valorantProfile.tag + '?filter=competitive')
                 .then(async function (response) {
                     try {
+
+                        if(!response.data.data[3]) {
+                            message.channel.send({embeds : [errorEmbed]});
+                            return message.delete();
+                        }
 
                         for(let i = 0; i < 5; i++){
                             Playtime += response.data.data[i].metadata.game_length;
@@ -191,21 +210,6 @@ module.exports = {
                     }
                 })
                 .catch(function (error) {
-
-                    const errorEmbed = new MessageEmbed()
-                        .setColor('#d1390f')
-                        .setAuthor(message.member.user.username, 'https://cdn.discordapp.com/attachments/834195818080108564/932365602427920404/x-png-35400.png')
-                        .setFooter('Developed by ZartaX0O3')
-                        .addFields(
-                            {
-                                name: 'Error Status',
-                                value: "```diff\n" + "Please ensure the account you are trying to view has" +
-                                    " logged into tracker.gg/valorant !\n\nExample:\n1. Click 'Sign in with Riot ID'\n2.\n\n"
-                                    + "\n```",
-                                inline: true
-                            },
-                        )
-
                     message.channel.send({embeds : [errorEmbed]});
                     message.delete();
                 });
