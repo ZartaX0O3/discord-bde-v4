@@ -4,7 +4,7 @@ const emote = require("../../emojis.json");
 module.exports = {
     name: "liens",
     category: "Information",
-    aliases: ["li","lien","link"],
+    aliases: ["li","lien"],
     cooldown: 2,
     usage: "liens",
     description: "Affichage des liens important pour l'UCA",
