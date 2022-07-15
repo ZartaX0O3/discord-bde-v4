@@ -10,7 +10,7 @@ module.exports = {
     category: "Information",
     aliases: ["valorantLink", "updateAccount", "linkAccount"],
     cooldown: 2,
-    usage: "*linkAccount name tag",
+    usage: ">linkAccount name tag",
     description: "Permet de lier son compte Valorant aux BOT pour ensuite recevoir ses statistiques",
     memberpermissions: [],
     requiredroles: [],
@@ -81,7 +81,7 @@ module.exports = {
                             console.log("-- Valorant account linked and created in database --")
 
                             const linkEmbed = new MessageEmbed()
-                                .setColor('RANDOM')
+                                .setColor('#28A828')
                                 .setFooter('Developed by ZartaX0O3')
                                 .addFields(
                                     {
@@ -103,6 +103,20 @@ module.exports = {
                                     cardURL_small: dataPlayer.small,
                                     cardURL_large: dataPlayer.large
                                 });
+
+                            const updateEmbed = new MessageEmbed()
+                                .setColor('#28A828')
+                                .setFooter('Developed by ZartaX0O3')
+                                .addFields(
+                                    {
+                                        name: 'Success !',
+                                        value: 'VALORANT account `' + `${args[0]}#${args[1]}` + '` has been updated  and set to your Discord ID.\n\n',
+                                        inline: true
+                                    },
+                                )
+
+                            message.channel.send({embeds : [updateEmbed]});
+                            message.delete();
 
                             console.log("-- Valorant account linked and updated in database --")
                         }

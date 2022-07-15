@@ -7,7 +7,7 @@ module.exports = {
     category: "Information",
     aliases: ["valo"],
     cooldown: 2,
-    usage: "valorant [filter] (unrated / competitive)",
+    usage: ">valorant [filter] (unrated / competitive)",
     description: "Voir les statistiques des joueurs du serveur a propos de valorant",
     memberpermissions: [],
     requiredroles: [],

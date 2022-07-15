@@ -10,7 +10,7 @@ module.exports = {
     category: "Information",
     aliases: ["valorantUnlink", "unlinkAccount"],
     cooldown: 2,
-    usage: "*unlinkAccount",
+    usage: ">unlinkAccount",
     description: "Permet de délier son compte Valorant aux BOT",
     memberpermissions: [],
     requiredroles: [],
