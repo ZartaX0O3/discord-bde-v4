@@ -10,25 +10,25 @@ module.exports = {
     category: "Information",
     aliases: ["valo"],
     cooldown: 2,
-    usage: "valorant name id",
+    usage: "valorant [filter] (unrated / competitive)",
     description: "Voir les statistiques des joueurs du serveur a propos de valorant",
     memberpermissions: [],
     requiredroles: [],
     alloweduserids: [],
-    minargs: 0, // minimum args for the message, 0 == none [OPTIONAL]
-    maxargs: 0, // maximum args for the message, 0 == none [OPTIONAL]
+    minargs: 1, // minimum args for the message, 0 == none [OPTIONAL]
+    maxargs: 1, // maximum args for the message, 0 == none [OPTIONAL]
     minplusargs: 0, // minimum args for the message, splitted with "++" , 0 == none [OPTIONAL]
     maxplusargs: 0, // maximum args for the message, splitted with "++" , 0 == none [OPTIONAL]
     argsmissing_message: "", //Message if the user has not enough args / not enough plus args, which will be sent, leave emtpy / dont add, if you wanna use command.usage or the default message! [OPTIONAL]
     argstoomany_message: "", //Message if the user has too many / not enough args / too many plus args, which will be sent, leave emtpy / dont add, if you wanna use command.usage or the default message! [OPTIONAL]
     run: async (client, message, args) => {
 
-        if(!args[0]) {
+        if (args[0]) {
 
             const userID = message.member.id
             let valorantProfile = await valorantModel.findOne({id: userID});
 
-            if(!valorantProfile) {
+            if (!valorantProfile) {
 
                 const noAccountEmbed = new MessageEmbed()
                     .setColor('#d1390f')
@@ -43,12 +43,12 @@ module.exports = {
                         },
                     );
 
-                return message.channel.send({embeds : [noAccountEmbed]})
+                return message.channel.send({embeds: [noAccountEmbed]})
             }
 
             let rankImage;
 
-            switch(valorantProfile.currenttierpatched){
+            switch (valorantProfile.currenttierpatched) {
                 case "Iron 1" :
                     rankImage = "https://static.wikia.nocookie.net/valorant/images/7/7c/Iron_1_Rank.png/revision/latest/scale-to-width-down/225?cb=20200623203005"
                     break;
@@ -120,9 +120,38 @@ module.exports = {
                 case "Diamond 3" :
                     rankImage = "https://static.wikia.nocookie.net/valorant/images/0/01/Diamond_3_Rank.png/revision/latest/scale-to-width-down/225?cb=20200623203611"
                     break;
+
+                case "Ascendant 1" :
+                    rankImage = "https://static.wikia.nocookie.net/valorant/images/e/e5/Ascendant_1_Rank.png/revision/latest/scale-to-width-down/225?cb=20220616175506"
+                    break;
+
+                case "Ascendant 2" :
+                    rankImage = "https://static.wikia.nocookie.net/valorant/images/1/1e/Ascendant_2_Rank.png/revision/latest/scale-to-width-down/242?cb=20220616175514"
+                    break;
+
+                case "Ascendant 3" :
+                    rankImage = "https://static.wikia.nocookie.net/valorant/images/5/53/Ascendant_3_Rank.png/revision/latest/scale-to-width-down/225?cb=20220616175519"
+                    break;
+
+                case "Immortal 1" :
+                    rankImage = "https://static.wikia.nocookie.net/valorant/images/a/a8/Immortal_1_Rank.png/revision/latest/scale-to-width-down/225?cb=20200623203613"
+                    break;
+
+                case "Immortal 2" :
+                    rankImage = "https://static.wikia.nocookie.net/valorant/images/2/21/Immortal_2_Rank.png/revision/latest/scale-to-width-down/242?cb=20200623203615"
+                    break;
+
+                case "Immortal 3" :
+                    rankImage = "https://static.wikia.nocookie.net/valorant/images/0/0b/Immortal_3_Rank.png/revision/latest/scale-to-width-down/242?cb=20200623203617"
+                    break;
+
+                case "Radiant" :
+                    rankImage = "https://static.wikia.nocookie.net/valorant/images/1/1a/Radiant_Rank.png/revision/latest/scale-to-width-down/225?cb=20200623203621"
+                    break;
             }
 
-            let rankName = valorantProfile.rank, Kills=0, Deaths=0, Assists=0, MostKills = 0, Playtime=0, player, nbVictory = 0, nbDefeat = 0, playerColor, KDA, KDR;
+            let Kills = 0, Deaths = 0, Assists = 0, MostKills = 0, Playtime = 0,
+                player, nbVictory = 0, nbDefeat = 0, playerColor, KDA, KDR;
 
             const errorEmbed = new MessageEmbed()
                 .setColor('#d1390f')
@@ -138,20 +167,34 @@ module.exports = {
                     },
                 )
 
+            const noStatisticsEmbed = new MessageEmbed()
+                .setColor('#d1390f')
+                .setAuthor(message.member.user.username, 'https://cdn.discordapp.com/attachments/834195818080108564/932365602427920404/x-png-35400.png')
+                .setFooter('Developed by ZartaX0O3')
+                .addFields(
+                    {
+                        name: 'Error Status',
+                        value: "```diff\n" + "Please ensure the account you are trying to view has enough statistic available" +
+                            "\n\nExample: You need to have an history of 5 games at least\n\n"
+                            + "\n```",
+                        inline: true
+                    },
+                )
+
             axios.get('https://api.henrikdev.xyz/valorant/v3/matches/eu/' + valorantProfile.name + '/' + valorantProfile.tag + '?filter=competitive')
                 .then(async function (response) {
                     try {
 
-                        if(!response.data.data[3]) {
-                            message.channel.send({embeds : [errorEmbed]});
+                        if (!response.data.data[4]) {
+                            message.channel.send({embeds: [noStatisticsEmbed]});
                             return message.delete();
                         }
 
-                        for(let i = 0; i < 5; i++){
+                        for (let i = 0; i < 5; i++) {
                             Playtime += response.data.data[i].metadata.game_length;
                             let j = 0;
 
-                            while(player !== valorantProfile.name){
+                            while (player !== valorantProfile.name) {
                                 player = response.data.data[i].players.all_players[j].name;
                                 playerColor = response.data.data[i].players.all_players[j].team.toLowerCase()
                                 j++;
@@ -160,20 +203,20 @@ module.exports = {
                             player = null;
 
 
-                            if((response.data.data[i].teams.red.has_won === true && playerColor === "red") || (response.data.data[i].teams.blue.has_won === true && playerColor === "blue")) nbVictory++;
+                            if ((response.data.data[i].teams.red.has_won === true && playerColor === "red") || (response.data.data[i].teams.blue.has_won === true && playerColor === "blue")) nbVictory++;
                             else nbDefeat++;
 
-                            Kills += response.data.data[i].players.all_players[j-1].stats.kills;
-                            Deaths += response.data.data[i].players.all_players[j-1].stats.deaths;
-                            Assists += response.data.data[i].players.all_players[j-1].stats.assists;
+                            Kills += response.data.data[i].players.all_players[j - 1].stats.kills;
+                            Deaths += response.data.data[i].players.all_players[j - 1].stats.deaths;
+                            Assists += response.data.data[i].players.all_players[j - 1].stats.assists;
 
-                            if(MostKills > response.data.data[i].players.all_players[j-1].stats.kills) continue;
-                            else MostKills = response.data.data[i].players.all_players[j-1].stats.kills;
+                            if (MostKills > response.data.data[i].players.all_players[j - 1].stats.kills)
+                            else MostKills = response.data.data[i].players.all_players[j - 1].stats.kills;
 
                         }
 
-                        KDR = parseFloat((Kills/Deaths).toFixed(2))
-                        KDA = parseFloat(((Kills + Assists)/Deaths).toFixed(2))
+                        KDR = parseFloat((Kills / Deaths).toFixed(2))
+                        KDA = parseFloat(((Kills + Assists) / Deaths).toFixed(2))
 
                         let hours = Math.floor(Playtime / 60 / 60);
                         let minutes = Math.floor(Playtime / 60) - (hours * 60);
@@ -188,34 +231,54 @@ module.exports = {
                             .setDescription("In-game stats from the last 5 games")
                             .setFooter('Developed by ZartaX0O3')
                             .addFields(
-                                { name: 'KDR', value: "```yaml\n" + KDR + "\n```", inline: true },
-                                { name: 'KDA', value: "```yaml\n" + KDA  + "\n```", inline: true },
-                                { name: 'Rank ', value: "```grey\n" + valorantProfile.currenttierpatched + "\n```", inline: true },
-                                { name: 'Kills', value: "```yaml\n" + Kills + "\n```", inline: true },
-                                { name: 'Deaths', value: "```yaml\n" + Deaths + "```", inline: true },
-                                { name: 'Assists', value: "```yaml\n" + Assists + "\n```", inline: true },
-                                { name: 'Most Kills', value: "```yaml\n" + MostKills + "\n```", inline: true },
-                                { name: 'Playtime', value: "```yaml\n" + formatted + "\n```", inline: true },
+                                {name: 'KDR', value: "```yaml\n" + KDR + "\n```", inline: true},
+                                {name: 'KDA', value: "```yaml\n" + KDA + "\n```", inline: true},
                                 {
-                                    name: 'Win Rate', value: nbVictory/(nbVictory+nbDefeat)*100 + "% ```yaml\n" + "    W: "
-                                        + nbVictory + "   |   L: " + nbDefeat + "\n```", inline: false
+                                    name: 'Rank ',
+                                    value: "```grey\n" + valorantProfile.currenttierpatched + "\n```",
+                                    inline: true
+                                },
+                                {name: 'Kills', value: "```yaml\n" + Kills + "\n```", inline: true},
+                                {name: 'Deaths', value: "```yaml\n" + Deaths + "```", inline: true},
+                                {name: 'Assists', value: "```yaml\n" + Assists + "\n```", inline: true},
+                                {name: 'Most Kills', value: "```yaml\n" + MostKills + "\n```", inline: true},
+                                {name: 'Playtime', value: "```yaml\n" + formatted + "\n```", inline: true},
+                                {
+                                    name: 'Win Rate',
+                                    value: nbVictory / (nbVictory + nbDefeat) * 100 + "% ```yaml\n" + "    W: "
+                                        + nbVictory + "   |   L: " + nbDefeat + "\n```",
+                                    inline: false
                                 },
                             )
                             .setImage(valorantProfile.cardURL_wide)
 
-                        message.channel.send({embeds : [Embed]})
+                        message.channel.send({embeds: [Embed]})
 
                     } catch (err) {
                         console.log(err);
                     }
                 })
                 .catch(function (error) {
-                    message.channel.send({embeds : [errorEmbed]});
+                    message.channel.send({embeds: [errorEmbed]});
                     message.delete();
                 });
-            }
+        }
+        else {
+            const noFilterEmbed = new MessageEmbed()
+                .setColor('#d1390f')
+                .setAuthor(message.member.user.username, 'https://cdn.discordapp.com/attachments/834195818080108564/932365602427920404/x-png-35400.png')
+                .setFooter('Developed by ZartaX0O3')
+                .addFields(
+                    {
+                        name: 'Error Status',
+                        value: "```diff\n" + "Please add a filter to view player statistics." +
+                            "\n\nExample: /valorant [unrated / competitive]\n```",
+                        inline: true
+                    },
+                );
 
-
+            return message.channel.send({embeds: [noFilterEmbed]})
+        }
     }
 }
 
