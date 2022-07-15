@@ -23,7 +23,7 @@ module.exports = {
     argstoomany_message: "", //Message if the user has too many / not enough args / too many plus args, which will be sent, leave emtpy / dont add, if you wanna use command.usage or the default message! [OPTIONAL]
     run: async (client, message, args) => {
 
-        if (args[0]) {
+        if (args[0] === "unrated" || args[0] === "competitive") {
 
             const userID = message.member.id
             let valorantProfile = await valorantModel.findOne({id: userID});
@@ -181,7 +181,7 @@ module.exports = {
                     },
                 )
 
-            axios.get('https://api.henrikdev.xyz/valorant/v3/matches/eu/' + valorantProfile.name + '/' + valorantProfile.tag + '?filter=competitive')
+            axios.get('https://api.henrikdev.xyz/valorant/v3/matches/eu/' + valorantProfile.name + '/' + valorantProfile.tag + '?filter=' + args[0])
                 .then(async function (response) {
                     try {
 
