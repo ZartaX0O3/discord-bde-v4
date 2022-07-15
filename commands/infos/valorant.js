@@ -219,6 +219,8 @@ module.exports = {
                         let minutes = Math.floor(Playtime / 60) - (hours * 60);
                         let seconds = Playtime % 60;
                         let formatted = hours + ':' + minutes + ':' + seconds;
+                        let winRate = "<:greenline:839562756930797598>".repeat(greenSquare) + "<:redline:839562438760071298>".repeat(redSquare);
+
 
                         const Embed = new MessageEmbed()
                             .setColor("#070707")
@@ -241,7 +243,7 @@ module.exports = {
                                 {name: 'Most Kills', value: "```yaml\n" + MostKills + "\n```", inline: true},
                                 {name: 'Playtime', value: "```yaml\n" + formatted + "\n```", inline: true},
                                 {
-                                    name: 'Win Rate',
+                                    name: 'Win Rate' + winRate,
                                     value: nbVictory / (nbVictory + nbDefeat) * 100 + "% ```yaml\n" + "    W: "
                                         + nbVictory + "   |   L: " + nbDefeat + "\n```",
                                     inline: false
