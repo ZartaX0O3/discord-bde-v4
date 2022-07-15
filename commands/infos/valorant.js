@@ -207,7 +207,7 @@ module.exports = {
                             Deaths += response.data.data[i].players.all_players[j - 1].stats.deaths;
                             Assists += response.data.data[i].players.all_players[j - 1].stats.assists;
 
-                            if (MostKills > response.data.data[i].players.all_players[j - 1].stats.kills)
+                            if (MostKills > response.data.data[i].players.all_players[j - 1].stats.kills) continue;
                             else MostKills = response.data.data[i].players.all_players[j - 1].stats.kills;
 
                         }
