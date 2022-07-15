@@ -219,7 +219,13 @@ module.exports = {
                         let minutes = Math.floor(Playtime / 60) - (hours * 60);
                         let seconds = Playtime % 60;
                         let formatted = hours + ':' + minutes + ':' + seconds;
-                        let winRate = "<:greenline:839562756930797598>".repeat(greenSquare) + "<:redline:839562438760071298>".repeat(redSquare);
+
+                        let greenSquare = Math.round((nbVictory / (nbVictory + nbDefeat))* 16);
+                        let redSquare = 16 - greenSquare;
+
+                        console.log(greenSquare + " " + redSquare)
+                        // Setting the win rate visual bar
+                        let winRate = "<:4860linegreen:997493152426491914>".repeat(greenSquare) + "<:7943linered:997493136265850890>".repeat(redSquare);
 
 
                         const Embed = new MessageEmbed()
@@ -243,10 +249,8 @@ module.exports = {
                                 {name: 'Most Kills', value: "```yaml\n" + MostKills + "\n```", inline: true},
                                 {name: 'Playtime', value: "```yaml\n" + formatted + "\n```", inline: true},
                                 {
-                                    name: 'Win Rate' + winRate,
-                                    value: nbVictory / (nbVictory + nbDefeat) * 100 + "% ```yaml\n" + "    W: "
-                                        + nbVictory + "   |   L: " + nbDefeat + "\n```",
-                                    inline: false
+                                    name: 'Win Rate - ' + nbVictory / (nbVictory + nbDefeat) * 100 + "%", value: winRate + " ```yaml\n" + "         W: "
+                                        + nbVictory + "   |   L: " + nbDefeat + "\n```", inline: false
                                 },
                             )
                             .setImage(valorantProfile.cardURL_wide)
