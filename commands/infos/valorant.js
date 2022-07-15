@@ -1,9 +1,6 @@
 const {MessageEmbed} = require("discord.js");
-const QuickChart = require('quickchart-js');
 const axios = require("axios");
 const valorantModel = require("../../models/valorantSchema");
-const emote = require("../../emojis.json");
-const roles = require("../../roles.json");
 
 module.exports = {
     name: "valorant",
@@ -259,6 +256,7 @@ module.exports = {
                     }
                 })
                 .catch(function (error) {
+                    console.log(error)
                     message.channel.send({embeds: [errorEmbed]});
                     message.delete();
                 });
