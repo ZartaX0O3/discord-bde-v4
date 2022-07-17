@@ -25,12 +25,15 @@ module.exports = {
 
         if(args[0] && args[1]){
 
-            let dataPlayer;
+            let dataPlayer, smallCard, largeCard, wideCard;
 
             axios.get('https://api.henrikdev.xyz/valorant/v1/account/' + args[0] + '/' + args[1])
                 .then(async function (response) {
                     try {
                         dataPlayer = response.data.data.card
+                        smallCard = response.data.data.card.small
+                        largeCard = response.data.data.card.large
+                        wideCard = response.data.data.card.wide
 
                     } catch (err) {
                         console.log(err);
@@ -72,9 +75,9 @@ module.exports = {
                                 currenttierpatched: response.data.data.currenttierpatched,
                                 ranking_in_tier: response.data.data.ranking_in_tier,
                                 elo: response.data.data.elo,
-                                cardURL_small: dataPlayer.small,
-                                cardURL_large: dataPlayer.large,
-                                cardURL_wide: dataPlayer.wide
+                                cardURL_small: smallCard,
+                                cardURL_large: largeCard,
+                                cardURL_wide: wideCard
                             })
 
                             await valorant.save();
@@ -100,8 +103,9 @@ module.exports = {
                                     currenttierpatched: response.data.data.currenttierpatched,
                                     ranking_in_tier: response.data.data.ranking_in_tier,
                                     elo: response.data.data.elo,
-                                    cardURL_small: dataPlayer.small,
-                                    cardURL_large: dataPlayer.large
+                                    cardURL_small: smallCard,
+                                    cardURL_large: largeCard,
+                                    cardURL_wide: wideCard
                                 });
 
                             const updateEmbed = new MessageEmbed()
